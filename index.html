@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合作院校</title>
+    <link rel="stylesheet" href="./css/yushang.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/number.js"></script>
+    <script src="./js/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=2.0&ak=8jGUkxotUU4kar5kVUdmwQsGGMLtArzh"></script>
+</head>
+<script>
+    $(document).ready(function (){
+        fetchDatanews();
+    })
+</script>
+<body>
+    <style>
+        .header {
+            width: 100%;
+        }
+
+        .header img {
+            width: 100%;
+        }
+
+        .fooder {
+            width: 100%;
+        }
+
+        .fooder img {
+            width: 100%;
+        }
+
+        .heRLeft {
+            width: 400px;
+        }
+
+        .Tit p {
+            font-size: 38px;
+            line-height: 1;
+            color: #192E5F;
+            font-weight: 500;
+        }
+
+        .BanBox {
+            position: relative;
+            height: 650px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .BanBox img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+    </style>
+    <div class="header">
+        <img src="./images/headimg.png" alt="">
+    </div>
+    <div class="BanBox appImg">
+        <img src="./images/banBg.jpg" alt="">
+    </div>
+    <style>
+        .heABox {
+            position: relative;
+            margin-top: -150px;
+            transform: scale(0.8);
+            transition: all 0.48s;
+            opacity: 0;
+        }
+
+        .heABox.heABoxAct {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .heABox .inner {
+            position: relative;
+            border-radius: 20px;
+            background: #fff;
+            padding: 50px;
+            overflow: hidden;
+        }
+
+        .heABg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: .1;
+        }
+
+        .heABg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body {
+            background: #192E5F;
+        }
+
+        /* .heABox .Tit p {
+            color: #fff;
+        } */
+
+        .heARig {
+            width: 75%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .heAText {
+            font-size: 16px;
+            font-weight: 300;
+            color: #192E5F;
+            width: 75%;
+        }
+
+        .heANTop {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .heANum {
+            display: flex;
+            align-items: center;
+        }
+
+        .heANum b {
+            font-size: 60px;
+            font-weight: 600;
+            color: #192E5F;
+            line-height: 1;
+        }
+
+        .heANum i {
+            font-size: 28px;
+            color: #192E5F;
+        }
+
+        .heAList {
+            display: flex;
+            align-items: center;
+            margin-top: 100px;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .heAItem {
+            width: 28%;
+            padding: 20px 0;
+            /* border-top: 1px solid rgb(255, 255, 255, .1); */
+            border-bottom: 1px solid rgb(25, 46, 95, .1);
+        }
+
+        .heAItem p {
+            font-size: 16px;
+            font-weight: 300;
+            color: #192E5F;
+            margin-bottom: 15px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            justify-content: space-between;
+        }
+
+        .heAItem svg {
+            width: 42px;
+            height: 42px;
+            margin-right: 5px;
+
+        }
+
+        .heAItem svg path {
+            fill: #192E5F;
+        }
+
+        .heATop {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .heABtn {
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            background: #192E5F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        @media(max-width:1468px) {
+            .heANum b {
+                font-size: 48px;
+            }
+
+            .heAList {
+                margin-top: 70px;
+            }
+        }
+
+        @media(max-width:1280px) {
+            .heARig {
+                width: 78%;
+            }
+        }
+    </style>
+    <div class="heABox">
+        <div class="inner">
+            <div class="heABg">
+                <img src="./images/heABg.png" alt="">
+            </div>
+            <div class="heATop">
+                <div class="Tit">
+                    <p>概况</p>
+                </div>
+                <div class="heARig">
+                    <div class="heAText">
+                        国际校区秉持“以我为主、高水平、一对多”的办学定位，建成2个高水平非独立法人中外合作办学机构，浙江大学爱丁堡大学联合学院、浙江大学伊利诺伊大学厄巴纳香槟校区联合学院。设立浙江大学国际联合商学院。国际校区与哈佛大学、剑桥大学、牛津大学、麻省理工学院等全球50余所世界名校建立合作。国际校区充分借鉴和吸收世界一流大学先进的教育理念、教育体系，打造接轨国际的教学模式，建立全过程教学质量保障机制，构建了融合东西方优势的人才培养新机制。目前，在校学生规模3119人（其中本科生1755、研究生1364），含国际生454人。
+                    </div>
+                    <a href="/cooperate.html" class="heABtn">
+                        更多合作
+                    </a>
+                </div>
+            </div>
+            <div class="heAList shuZi">
+                <div class="heAItem">
+                    <p>国际学生</p>
+                    <div class="heANTop">
+                        <div class="heANum">
+                            <b class="timer math" id="count-number" data-to="450" data-speed="4000"></b><i>+</i>
+                        </div>
+                        <svg t="1731911095856" class="icon" viewBox="0 0 1026 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="9221" width="200" height="200">
+                            <path
+                                d="M512.072321 64.049197L64.09528 238.44026 512.072321 412.831322l450.088933-174.391062L512.008325 64.049197z m23.03882-59.644943l450.152929 174.391063a63.99672 63.99672 0 0 1 0 119.353883L535.111141 472.540262a63.99672 63.99672 0 0 1-46.333626 0L40.864471 298.021206a63.99672 63.99672 0 0 1 0-119.289886l447.977041-174.391062a63.99672 63.99672 0 0 1 46.269629 0z"
+                                fill="#333333" p-id="9222"></path>
+                            <path
+                                d="M760.763576 663.890456h63.99672v73.724221c-106.106562 83.771707-212.533108 94.267169-319.343634 94.267169-106.874523 0-213.749045-10.495462-320.623568-94.267169V345.570769l63.996721 30.462439v329.071135c70.844369 47.741553 143.672637 62.716786 256.626847 62.716786 112.634227 0 185.142511-14.911236 255.346914-62.588792v-41.341881z m-255.346914 103.99467c112.634227 0 185.142511-14.975233 255.346914-62.652789v-41.341881h63.99672v73.724221c-106.106562 83.771707-212.533108 94.267169-319.343634 94.267169-106.874523 0-213.749045-10.495462-320.623568-94.267169V346.466724l63.996721 29.438491v329.199128c70.844369 47.741553 143.672637 62.716786 256.626847 62.716786zM532.999249 291.941518a31.99836 31.99836 0 0 1 22.142865-60.028924L832.055922 333.923366V455.709125a31.99836 31.99836 0 1 1-63.99672 0V378.52908L532.999249 291.877521z"
+                                fill="#333333" p-id="9223"></path>
+                            <path
+                                d="M792.441952 723.215415h15.23122l0.57597-4.351777a38.526026 38.526026 0 0 1-8.19158-5.759705 38.526026 38.526026 0 0 1-8.19158 5.759705l0.639967 4.351777z m-15.99918 233.396039h47.293577l-23.678787-176.630948-23.678786 176.630948z m-2.367878-297.392759h51.965336a25.598688 25.598688 0 0 1 25.406698 22.206862l41.533872 310.192103a25.598688 25.598688 0 0 1-25.406698 28.990514h-135.03308a25.598688 25.598688 0 0 1-25.406698-28.990514l41.597869-310.192103a25.598688 25.598688 0 0 1 25.342701-22.206862z"
+                                fill="#333333" p-id="9224"></path>
+                            <path
+                                d="M800.057562 694.608881c-58.237015 0-101.754785-56.317114-101.754785-122.361729s43.51777-122.361729 101.754785-122.361729 101.754785 56.317114 101.754785 122.361729-43.51777 122.361729-101.754785 122.361729z m0-63.99672c18.815036 0 37.758065-24.574741 37.758065-58.365009 0-33.726272-18.943029-58.365009-37.758065-58.365008s-37.758065 24.638737-37.758065 58.365008c0 33.790268 18.943029 58.365009 37.758065 58.365009z"
+                                fill="#333333" p-id="9225"></path>
+                        </svg>
+                    </div>
+
+                </div>
+                <div class="heAItem">
+                    <p>国家地区</p>
+                    <div class="heANTop">
+                        <div class="heANum">
+                            <b class="timer math" id="count-number" data-to="80" data-speed="4000"></b><i>+</i>
+                        </div>
+                        <svg t="1731911430847" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="16762" width="200" height="200">
+                            <path
+                                d="M482.048 177.28l33.728 27.392a59.456 59.456 0 0 0-18.24 38.656c-0.96 13.568-2.048 27.328-3.2 39.68l-1.152 0.32c-13.504 3.968-36.16 10.56-50.496 32.192l-0.192 0.384-0.256 0.32a60.416 60.416 0 0 0-2.304 62.4c12.096 22.08 37.44 36.928 68.032 40.512l-2.24 4.16-1.024 1.792a48.832 48.832 0 0 0-22.912-1.216l-9.92-2.304c-11.52-2.88-23.552-5.888-35.52-5.888a55.936 55.936 0 0 0-49.664 27.584 48.448 48.448 0 0 0-33.408 19.392 48.576 48.576 0 0 0-7.936 39.808l1.024 11.648c0.832 8.64 1.92 19.712 2.752 32.96a61.824 61.824 0 0 0-25.216-6.72l-1.6-0.064c-1.152-2.048-4.096-8.064-6.208-22.208a418.496 418.496 0 0 1-2.624-57.152c0-14.08-4.352-40.32-33.28-57.984a81.024 81.024 0 0 0-42.24-11.84c-14.528 0-28.736 3.84-41.408 11.008l-1.92-0.768A335.872 335.872 0 0 1 274.432 274.56a334.656 334.656 0 0 1 106.88-71.936 329.088 329.088 0 0 1 100.8-25.28m346.88 257.28l11.776 7.36a345.088 345.088 0 0 1 3.776 119.168l-40.896 36.736a267.52 267.52 0 0 0-37.184-44.48 53.76 53.76 0 0 1-11.264-13.888 17.92 17.92 0 0 1-2.432-9.984c0.256-5.632 3.2-12.8 8.512-20.672 8.832-13.12 23.424-27.52 43.264-42.88l28.16-21.568-3.712-9.728m-363.52 207.296c3.2 1.984 6.592 3.968 10.24 5.696 5.952 2.752 16.32 12.48 23.808 19.584 10.944 10.24 22.848 21.376 36.928 28.608a55.424 55.424 0 0 0 28.864 30.464 153.088 153.088 0 0 0-22.208 43.2l0.064-5.76-20.48-14.72a380.16 380.16 0 0 1-30.976-25.28c-22.272-20.224-29.056-31.68-30.848-35.328 0.192-11.264 1.536-20.224 2.688-27.584 0.96-5.376 1.92-11.84 1.92-18.88M512 128a384 384 0 1 0 0 768A384 384 0 1 0 512 128z m10.624 243.84c-28.608 0-49.28-15.168-39.936-29.76 11.904-17.92 54.592-8 58.432-43.968 1.728-16.64 3.2-35.392 4.352-51.392a11.52 11.52 0 0 1 10.752-10.624c27.904-2.048 30.72-35.264 4.672-56.512a335.872 335.872 0 0 1 188.672 94.848c28.096 28.096 50.56 60.288 67.2 95.872a24.192 24.192 0 0 0-12.992-3.84c-21.12 0-40.704 28.8-28.544 61.44-99.712 76.544-74.176 130.048-41.6 160.512 9.6 8.96 19.072 20.544 27.264 32 8 11.008 12.928 23.68 15.808 36.928 1.024 4.8 4.8 7.232 10.24 7.232 8.256 0 20.288-5.504 32.32-16.32a334.72 334.72 0 0 1-69.632 101.44 334.208 334.208 0 0 1-163.072 90.048 35.008 35.008 0 0 0-12.8 0.96c11.648-49.088 17.216-76.8 41.216-97.6 33.024-28.672 7.296-60.352-17.984-60.352a28.288 28.288 0 0 0-4.352 0.32 22.656 22.656 0 0 1-3.008 0.256c-16.64 0-5.632-26.24-23.232-27.712-18.624-1.536-43.008-38.528-70.08-51.392-14.144-6.72-28.16-24.896-50.176-25.856h-1.28c-13.952 0-31.808 8.32-40.768 8.32-3.648 0-5.888-1.28-5.888-4.992 0-42.88-4.416-73.28-5.12-85.376-0.256-4.096-1.472-5.312-0.768-5.312 0.896 0 5.376 2.368 20.8 2.752h0.32c13.952 0 7.296-28.8 21.12-30.016h1.792c12.288 0 35.584 8.832 47.808 8.832a10.88 10.88 0 0 0 5.952-1.28c0.128-0.128 0.256-0.192 0.512-0.192 6.592 0 32.576 64.768 47.104 64.768 6.016 0 10.048-11.072 10.048-42.048 0-12.8-6.72-35.2 0-47.424 26.304-48.192 50.944-87.552 48.832-93.12-0.64-1.728-8.512-3.264-18.752-3.264-8.768 0-19.264 1.088-28.736 4.16-7.04 2.368 2.112 13.312-7.68 15.616-6.4 1.408-12.8 2.112-18.816 2.112zM197.76 450.816a36.48 36.48 0 0 0 20.288-5.76 36.16 36.16 0 0 1 19.904-6.016 32.64 32.64 0 0 1 17.088 4.8c6.08 3.712 10.368 8.704 10.368 17.088 0 61.184 2.112 126.528 57.664 127.488 1.664 0 30.912 11.2 44.8 47.488 1.728 4.16 4.928 5.504 9.216 5.504 8.64 0 21.76-5.504 35.712-5.504 10.368 0 0 17.664 0 55.872 0 37.76 81.92 96.384 81.92 96.384-0.448 24 0.704 43.84 2.56 59.52a335.872 335.872 0 0 1-222.848-98.112A334.208 334.208 0 0 1 176 512c0-21.76 2.048-43.2 6.08-64.128 4.928 1.92 10.368 2.88 15.68 2.88z"
+                                p-id="16763"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="heAItem">
+                    <p>合作伙伴</p>
+                    <div class="heANTop">
+                        <div class="heANum">
+                            <b class="timer math" id="count-number" data-to="50" data-speed="4000"></b><i>+</i>
+                        </div>
+                        <svg t="1731911300145" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="10338" width="200" height="200">
+                            <path
+                                d="M492.032 950.784c-17.408 0-33.792-6.656-46.08-18.944L18.944 504.832C6.656 492.544 0 476.16 0 458.752c0-17.408 6.656-33.792 18.944-46.08L339.456 92.16c12.288-12.288 28.672-18.944 46.08-18.944 17.408 0 33.792 6.656 46.08 18.944l109.568 109.568 104.96-104.96c12.288-12.288 28.672-18.944 46.08-18.944 17.408 0 33.792 6.656 46.08 18.944l266.752 266.752c12.288 12.288 18.944 28.672 18.944 46.08 0 17.408-6.656 33.792-18.944 46.08L884.736 576l-6.144-6.144-5.12 15.872c-3.584 10.752-8.192 18.944-14.848 25.6L538.112 931.84c-12.288 12.288-28.672 18.944-46.08 18.944zM385.536 143.36c-12.8 0-25.088 5.12-34.304 14.336L84.48 424.448c-9.216 9.216-14.336 20.992-14.336 34.304 0 12.8 5.12 25.088 14.336 34.304l373.76 373.76c9.216 9.216 20.992 14.336 34.304 14.336 12.8 0 25.088-5.12 34.304-14.336l19.968-19.968L337.92 637.952c-3.072-3.072-3.072-8.704 0-11.776l26.624-26.624c1.536-1.536 3.584-2.56 6.144-2.56 2.048 0 4.608 1.024 6.144 2.56l208.896 208.896 55.808-55.808-189.952-189.952c-3.072-3.072-3.072-8.704 0-11.776l26.624-26.624c1.536-1.536 3.584-2.56 6.144-2.56 2.048 0 4.608 1.024 6.144 2.56L680.448 714.24l55.808-55.808-171.008-171.008c-3.072-3.072-3.072-8.704 0-11.776l26.624-26.624c1.536-1.536 3.584-2.56 6.144-2.56 2.048 0 4.608 1.024 6.144 2.56l171.008 171.008 19.968-19.968c9.216-9.216 14.336-20.992 14.336-34.304 0-12.8-5.12-25.088-14.336-34.304l-373.76-373.76c-10.752-9.216-23.04-14.336-35.84-14.336z m306.688 4.608c-12.8 0-25.088 5.12-34.304 14.336l-78.336 78.336 281.6 281.6 78.336-78.336c9.216-9.216 14.336-20.992 14.336-34.304s-5.12-25.088-14.336-34.304L726.016 161.792c-9.216-8.704-20.992-13.824-33.792-13.824z"
+                                p-id="10339"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/number.js"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".heABox").addClass("heABoxAct");
+            }, 10);
+            $('.timer').each(count);
+            function count(options) {
+                var $this = $(this);
+                options = $.extend({}, options || {}, $this.data(
+                    'countToOptions') || {});
+                $this.countTo(options);
+            }
+            $(".math").removeClass("timer");
+        });
+    </script>
+    <style>
+        .heMBox {
+            position: relative;
+            background: #192E5F;
+        }
+
+        .heMTop {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        .heMRig {
+            position: relative;
+        }
+
+        .heMImg {
+            width: 100%;
+            position: relative;
+            background: #fff;
+        }
+
+        .heMImg img {
+            width: 100%;
+        }
+
+        .heMList {
+            margin-top: 70px;
+            padding: 20px 50px;
+            background: #fff;
+            border-radius: 16px;
+        }
+
+        .heMItem {
+            padding: 30px 0;
+            position: relative;
+            border-bottom: 1px solid rgb(25, 46, 95, .1);
+        }
+
+        .heMItem:last-child {
+            border-bottom: none;
+        }
+
+        .heMItem p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            opacity: .6;
+        }
+
+        .heMNum {
+            display: flex;
+            align-items: end;
+        }
+
+        .heMNum b {
+            font-size: 48px;
+            line-height: 1;
+            font-weight: 600;
+            color: #192E5F;
+        }
+
+        .heMNum i {
+            font-size: 28px;
+            line-height: 1;
+            color: #192E5F;
+        }
+
+        .heMAItem {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.48s;
+            cursor: pointer;
+        }
+
+
+
+        .heMAItem1 {
+            left: 185px;
+            top: 130px;
+        }
+
+        .heMAItem2 {
+            left: 120px;
+            bottom: 220px;
+        }
+
+        .heMAItem3 {
+            left: 480px;
+            top: 150px;
+        }
+
+        .heMAItem4 {
+            left: 611px;
+            bottom: 120px;
+        }
+
+        .heMAItem5 {
+            right: 220px;
+            top: 140px;
+        }
+
+        .heMAItem6 {
+            right: 80px;
+            bottom: 170px;
+        }
+
+        .heMImg {
+            background: linear-gradient(90deg, #ccc, #276489, #ccc, #276489);
+            background-size: 300% 100%;
+            animation: gradient 5s ease-out infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position-X: 100%;
+            }
+
+            100% {
+                background-position-X: 0%;
+            }
+        }
+
+
+
+        .heMYuan {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            position: relative;
+        }
+
+        .heMYuan::after {
+            content: '';
+            width: 300%;
+            height: 300%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(255, 255, 255, .4);
+            border-radius: 50%;
+            animation: heMFd 5s infinite linear;
+        }
+
+        .heMYuan::before {
+            content: '';
+            width: 300%;
+            height: 300%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(255, 255, 255, .4);
+            border-radius: 50%;
+            animation: heMFd 5s infinite -2s linear;
+        }
+
+        .heMAItem2 .heMYuan::before {
+            animation: heMFd 8s infinite -4s linear;
+        }
+
+        .heMAItem3 .heMYuan::before {
+            animation: heMFd 6s infinite -3s linear;
+        }
+
+        .heMAItem4 .heMYuan::before {
+            animation: heMFd 8s infinite -4s linear;
+        }
+
+        .heMAItem6 .heMYuan::before {
+            animation: heMFd 6s infinite -3s linear;
+        }
+
+        @keyframes heMFd {
+            0% {
+                width: 120%;
+                height: 120%;
+                opacity: 1;
+            }
+
+            100% {
+                width: 1000%;
+                height: 1000%;
+                opacity: 0;
+            }
+        }
+
+        .heMalk p {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.48s;
+        }
+
+        .heMAItem:hover {
+            transform: scale(1.2);
+        }
+    </style>
+    <div class="heMBox">
+        <div class="inner">
+            <div class="heMRig">
+                <div class="heMImg">
+                    <img src="./images/map2.png" alt="">
+                </div>
+                <div class="heMalk">
+                    <a href="/cooperate.html?id=0" class="heMAItem heMAItem1">
+                        <div class="heMYuan"></div>
+                        <p>欧洲</p>
+                    </a>
+                    <a href="/cooperate.html?id=4" class="heMAItem heMAItem2">
+                        <div class="heMYuan"></div>
+                        <p>非洲</p>
+                    </a>
+                    <a href="/cooperate.html?id=1" class="heMAItem heMAItem3">
+                        <div class="heMYuan"></div>
+                        <p>亚洲</p>
+                    </a>
+                    <a href="/cooperate.html?id=5" class="heMAItem heMAItem4">
+                        <div class="heMYuan"></div>
+                        <p>大洋洲</p>
+                    </a>
+                    <a href="/cooperate.html?id=2" class="heMAItem heMAItem5">
+                        <div class="heMYuan"></div>
+                        <p>北美洲</p>
+                    </a>
+                    <a href="/cooperate.html?id=3" class="heMAItem heMAItem6">
+                        <div class="heMYuan"></div>
+                        <p>南美洲</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.heMAItem').mouseover(function () {
+                let index = $(this).index();
+                console.log('111', index)
+            }).mouseout(function () { // 鼠标离开时恢复原样
+            });
+        });
+    </script>
+
+
+    <style>
+        .HzCBox {
+            position: relative;
+        }
+
+        .HzCBg {
+            width: 100%;
+            height: calc(100% + 200px);
+            position: absolute;
+            left: 0;
+            top: -200px;
+        }
+
+        .HzCBg::after {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgb(25, 46, 95, .3);
+            content: '';
+        }
+
+        .HzCBg img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+
+        .HzCTBox {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            /* margin-top: 50px; */
+        }
+
+        .HzCTBox>img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+
+        .HzCLeft {
+            width: 50%;
+            padding: 70px 5% 70px 8%;
+            background: linear-gradient(to right, #eff7ff, rgb(239, 247, 255, 1), rgb(239, 247, 255, .2), rgb(239, 247, 255, 0));
+            position: relative;
+        }
+
+        .HzCList {
+            margin-top: 50px;
+        }
+
+        .HzCItem {
+            position: relative;
+            margin-bottom: 35px;
+        }
+
+        .HzCItem span {
+            font-size: 16px;
+            color: #192E5F;
+            font-weight: 100;
+        }
+
+        .HzCItem p {
+            font-size: 20px;
+            color: #192e5f;
+            font-weight: 300;
+            line-height: 1;
+            margin-top: 10px;
+        }
+
+        .HzCItem svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .HzCItem svg path {
+            fill: #192E5F;
+        }
+
+        .HzCItemF {
+            display: flex;
+            align-items: center;
+        }
+
+        .HzCBtn {
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #192E5F;
+            color: #fff;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .HzCIcon {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            right: 25%;
+            top: 45%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(25, 46, 95, .1);
+        }
+
+        .HzCIcon::after {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgb(25, 46, 95, .1);
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            animation: HzCIconFd 4s infinite 2s;
+        }
+
+        .HzCIcon::before {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgb(25, 46, 95, .1);
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            animation: HzCIconFd 4s infinite;
+        }
+
+        @keyframes HzCIconFd {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .HzCIcon img {
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
+        }
+
+        .HzNItem a {
+            transform: scale(0.7);
+            padding: 30px;
+            border-radius: 16px;
+            background: #eff7ff;
+            display: block;
+            transition: all 0.48s;
+        }
+        .HzNItem a:hover{
+            transform: scale(0.75);
+        }
+        .HzNItem.swiper-slide-next ~ * {
+            margin-left: -8%;
+        }
+        .swiper-slide-next{
+            margin-left: -2%;
+        }
+        .swiper-slide-prev{
+            margin-right: -2%;
+        }
+        .HzNImg {
+            width: 100%;
+            padding-top: 65%;
+            position: relative;
+            transition: all 0.48s;
+        }
+
+        .HzNImg img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .HzNTbox {
+            padding: 20px 0;
+            position: relative;
+            transition: all 0.8s 0.8s;
+        }
+
+        .HzNTit {
+            font-size: 20px;
+            line-height: 1.5;
+            font-weight: 600;
+            color: #192E5F;
+            margin: 5px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .HzNTime {
+            font-size: 16px;
+            opacity: .6;
+        }
+
+        .HzNList {
+            position: relative;
+            overflow: hidden;
+            margin-top: -20px;
+        }
+
+        .HzNSwiper {
+            /* overflow: inherit; */
+            margin-top: 70px;
+            width: 100%;
+        }
+
+        .HzNSwiper .swiper-wrapper {
+            align-items: center;
+
+        }
+
+        .HzNTop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        .HzNTop .Tit p {
+            color: #fff;
+        }
+
+        .HzNBtnBox {
+            display: flex;
+            align-items: center;
+        }
+
+        .HzNBtn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.48s;
+            border: 1px solid rgb(255, 255, 255, .4);
+        }
+
+        .HzNBtn svg {
+            width: 30%;
+            height: 30%;
+            opacity: .8;
+        }
+
+        .HzNBtn svg path {
+            fill: #192E5F;
+        }
+
+        .HzNSwiper_prev svg {
+            transform: rotate(180deg);
+        }
+
+        .HzNBtn:hover {
+            background: #192E5F;
+        }
+
+        .HzNBtn:hover svg path {
+            fill: #fff;
+        }
+
+        .HzNText {
+            font-size: 16px;
+            color: #999;
+        }
+        .HzNItem.swiper-slide {
+            transition: all 0.48s;
+        }
+
+        .HzNItem.swiper-slide-active a{
+            transform: scale(1);
+        }
+        /* .HzNItem.swiper-slide-active .HzNItem:nth-child(2) a {
+            animation-delay: .2s;
+        }
+
+        .HzNItem:nth-child(3) a {
+            animation-delay: .4s;
+        }
+
+        .HzNItem:nth-child(4) a {
+            animation-delay: .6s;
+        } */
+
+
+
+        @media(max-width:1468px) {
+            .BanBox{
+                height: 550px;
+            }
+        }
+
+        @media(max-width:1368px) {
+            .HzCItem p {
+                font-size: 18px;
+            }
+
+            .heMYuan::after {
+                width: 150%;
+                height: 150%;
+            }
+
+            .heMYuan {
+                width: 10px;
+                height: 10px;
+            }
+
+            .heMYuan::before {
+                width: 150%;
+                height: 150%;
+            }
+
+            .heMAItem:hover {
+                transform: scale(1.1);
+            }
+
+            .heMalk p {
+                font-size: 16px;
+            }
+
+            .heMAItem4 {
+                left: 45%;
+                bottom: 92px;
+            }
+
+            .heMAItem3 {
+                left: 38%;
+                top: 100px;
+            }
+
+            .heMAItem5 {
+                right: 18%;
+                top: 120px;
+            }
+
+            .heMAItem6 {
+                right: 4%;
+                bottom: 90px;
+            }
+
+            .heMAItem2 {
+                left: 8%;
+                bottom: 150px;
+            }
+
+            .heARig {
+                width: 80%;
+            }
+
+            .heAText {
+                font-size: 15px;
+            }
+
+            .heANum b {
+                font-size: 42px;
+            }
+
+            .heAItem p {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .heAItem {
+                padding: 5px 0;
+            }
+
+            .heAItem svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .HzCItem {
+                margin-bottom: 25px;
+            }
+
+            .HzCLeft {
+                width: 50%;
+                padding: 50px 5% 50px 5%;
+            }
+
+            .HzCList {
+                margin-top: 30px;
+            }
+
+            .HzNList {
+                margin-top: 0;
+            }
+        }
+
+        @media(max-width:1280px) {
+            .heABox .inner {
+                padding: 35px;
+            }
+
+            .heAList {
+                margin-top: 50px;
+            }
+
+            .heMYuan::before {
+                width: 120%;
+                height: 120%;
+            }
+
+            .heMYuan::after {
+                width: 120%;
+                height: 120%;
+            }
+
+            .heMAItem1 {
+                left: 17%;
+                top: 90px;
+            }
+
+            .heMAItem5 {
+                right: 18%;
+                top: 100px;
+            }
+
+            .heMAItem4 {
+                left: 45%;
+                bottom: 72px;
+            }
+        }
+
+        @media(max-width:1024px) {
+            .Tit p {
+        font-size: 32px;
+    }
+            .BanBox{
+                height: 450px;
+            }
+            .heATop {
+                flex-wrap: wrap;
+            }
+
+            .heARig {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+
+            .heAText {
+                width: 100%;
+                margin: 20px 0 30px;
+            }
+
+            .heANum b {
+                font-size: 36px;
+            }
+
+            .heAItem svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .heMYuan::before {
+                width: 100%;
+                height: 100%;
+            }
+
+            .heMYuan::after {
+                width: 100%;
+                height: 100%;
+            }
+
+            .heMAItem6 {
+                right: 6%;
+                bottom: 80px;
+            }
+
+            .heMAItem4 {
+                left: 45%;
+                bottom: 110px;
+            }
+
+            .heMAItem3 {
+                left: 38%;
+                top: 70px;
+            }
+
+            .heMAItem5 {
+                right: 20%;
+                top: 80px;
+            }
+
+            .heMAItem2 {
+                left: 9%;
+                bottom: 150px;
+            }
+
+            .heMalk p {
+                display: none;
+            }
+
+        }
+
+        @media(max-width:900px) {
+            .heMYuan::before {
+                width: 70%;
+                height: 70%;
+            }
+
+            .heMYuan::after {
+                width: 70%;
+                height: 70%;
+            }
+
+            @keyframes heMFd {
+                0% {
+                    width: 120%;
+                    height: 120%;
+                    opacity: 1;
+                }
+
+                100% {
+                    width: 600%;
+                    height: 600%;
+                    opacity: 0;
+                }
+            }
+
+            .heMAItem4 {
+                left: 45%;
+                bottom: 90px;
+            }
+
+            .heMAItem2 {
+                left: 9%;
+                bottom: 120px;
+            }
+
+            .heMAItem1 {
+                left: 17%;
+                top: 60px;
+            }
+
+            .heMAItem5 {
+                right: 18%;
+                top: 60px;
+            }
+        }
+
+        @media(max-width:768px) {
+            .heAList {
+                flex-wrap: wrap;
+                margin-top: 50px;
+            }
+
+            .heAItem {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .HzNBtn {
+                width: 42px;
+                height: 42px;
+            }
+
+            .HzCLeft {
+                width: 80%;
+                padding: 50px;
+            }
+
+            .HzCItem span {
+                font-size: 14px;
+            }
+
+            .HzCItem svg {
+                width: 18px;
+                height: 18px;
+                margin-right: 5px;
+            }
+
+            .HzCIcon {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                right: 18%;
+                top: 42%;
+            }
+        }
+
+        @media(max-width:680px) {
+            .heABox .inner {
+        padding: 30px;
+    }
+            .Tit p {
+        font-size: 28px;
+    }
+    .HzCBtn{
+                font-size: 14px;
+            }
+            .heABtn{
+                font-size: 14px;
+            }
+            .BanBox{
+                height: 360px;
+            }
+
+            .HzNList {
+                margin-top: 20px;
+            }
+
+            .HzNSwiper {
+                margin-top: 50px;
+            }
+
+            .heMYuan::before {
+                width: 50%;
+                height: 50%;
+            }
+
+            .heMYuan::after {
+                width: 50%;
+                height: 50%;
+            }
+
+            @keyframes heMFd {
+                0% {
+                    width: 120%;
+                    height: 120%;
+                    opacity: 1;
+                }
+
+                100% {
+                    width: 400%;
+                    height: 400%;
+                    opacity: 0;
+                }
+            }
+
+            .heMYuan {
+                width: 6px;
+                height: 6px;
+            }
+            .heMAItem4 {
+        left: 46%;
+        bottom: 70px;
+    }
+            .heMAItem6 {
+        right: 5%;
+        bottom: 60px;
+    }
+    .heMAItem5 {
+        right: 18%;
+        top: 50px;
+    }
+    .heMAItem3 {
+        left: 38%;
+        top: 40px;
+    }
+    .heMAItem1 {
+        left: 20%;
+        top: 45px;
+    }
+    .heMAItem2 {
+        left: 9%;
+        bottom: 80px;
+    }
+    .heANum b {
+        font-size: 32px;
+    }
+    .HzNBtn {
+        width: 36px;
+        height: 36px;
+        margin-left: 8px;
+    }
+    .heAItem p {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+    .HzCLeft {
+        padding: 30px;
+    }
+        }
+        @media(max-width:500px){
+            .heAText {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+            
+            
+    .HzCItem p {
+        font-size: 16px;
+    }
+    .HzCIcon {
+        width: 42px;
+        height: 42px;
+        right: 6%;
+    }
+    .heABox .inner {
+        padding: 24px;
+        margin-bottom: 20px;
+    }
+    .heANum b {
+        font-size: 28px;
+    }
+    .heAItem {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .HzCLeft {
+        width: 100%;
+        padding: 30px;
+    }
+.heMAItem5 {
+        right: 18%;
+        top: 26%;
+    }
+    .heMAItem4 {
+        left: 46%;
+        bottom: 32%;
+    }
+.heMAItem6 {
+        right: 5%;
+        bottom: 27%;
+    }
+    .heMAItem3 {
+        left: 38%;
+        top: 20%;
+    }
+    .heMAItem1 {
+        left: 20%;
+        top: 24%;
+    }
+    .heMAItem2 {
+        left: 8%;
+        bottom: 42%;
+    }
+    .heANum i {
+    font-size: 20px;
+}
+.Tit p {
+        font-size: 24px;
+    }
+
+
+.heABtn,.HzCBtn {
+    width: 130px;
+    height: 45px;
+}
+        }
+    </style>
+    <div class="HzNList">
+        <div class="inner">
+            <div class="HzNTop wgt-fade-animate ">
+                <div class="Tit">
+                    <p>新闻资讯</p>
+                </div>
+                <div class="HzNBtnBox">
+                    <div class="HzNBtn HzNSwiper_prev">
+                        <svg t="1731916806227" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="18573" width="200" height="200">
+                            <path
+                                d="M412.367 6.389l-63.88 62.071 460.007 446.973-460.007 446.975 63.88 62.071 523.885-509.044z"
+                                fill="#272636" p-id="18574"></path>
+                        </svg>
+                    </div>
+                    <div class="HzNBtn HzNSwiper_next">
+                        <svg t="1731916806227" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="18573" width="200" height="200">
+                            <path
+                                d="M412.367 6.389l-63.88 62.071 460.007 446.973-460.007 446.975 63.88 62.071 523.885-509.044z"
+                                fill="#272636" p-id="18574"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper HzNSwiper">
+                <div class="swiper-wrapper newWList" >
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="HzCBox padd">
+        <div class="HzCBg">
+            <img src="./images/heZBg.jpg" alt="">
+        </div>
+        <div class="inner">
+            <div class="HzCTBox wgt-fade-animate">
+                <img src="./images/HzCBg.png" alt="">
+                <div class="HzCLeft">
+                    <div class="Tit">
+                        <p>联系我们</p>
+                    </div>
+                    <div class="HzCList">
+                        <div class="HzCItem">
+                            <div class="HzCItemF">
+                                <svg t="1731897826326" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="5161" width="200" height="200">
+                                    <path
+                                        d="M706.709504 923.947008c-53.997568 0-124.09856-36.25984-173.268992-66.885632-66.076672-40.306688-136.998912-96.698368-200.660992-157.94176l-20.14208-20.158464c-61.247488-63.66208-117.661696-134.600704-157.960192-200.67328-30.623744-49.156096-66.881536-119.273472-66.881536-173.2608 0-58.025984 41.908224-120.076288 59.635712-144.257024 13.70112-18.532352 62.857216-78.974976 103.960576-78.974976 16.922624 0 35.454976 11.286528 59.63776 36.25984 20.946944 21.766144 41.089024 49.168384 54.790144 68.5056 17.727488 25.792512 34.664448 52.3776 46.739456 75.753472 20.158464 37.064704 21.766144 53.194752 21.766144 62.050304 0 17.727488-8.871936 33.845248-27.40224 45.93664-12.091392 8.871936-26.595328 14.505984-40.298496 20.959232-9.660416 4.026368-24.971264 10.469376-30.623744 15.314944 2.41664 8.050688 10.481664 29.011968 34.6624 63.660032 21.753856 32.231424 50.765824 67.684352 76.556288 94.285824 26.585088 25.790464 61.247488 53.997568 94.271488 76.57472 34.676736 23.351296 55.609344 32.23552 63.690752 34.650112 4.831232-5.64224 11.272192-20.965376 15.29856-30.625792 5.634048-13.71136 12.075008-28.209152 20.959232-40.312832 12.075008-18.520064 27.40224-28.207104 45.922304-28.207104 8.884224 0 24.182784 2.441216 62.050304 22.571008 23.379968 12.105728 49.975296 29.007872 75.769856 46.75584 19.32288 12.877824 46.723072 33.839104 68.487168 54.802432 24.987648 24.154112 36.25984 42.698752 36.25984 59.635712 0 41.091072-61.241344 90.261504-79.75936 103.948288C826.791936 882.051072 764.737536 923.947008 706.709504 923.947008L706.709504 923.947008 706.709504 923.947008zM367.429632 663.631872c61.24544 58.836992 128.946176 112.83456 191.803392 151.506944 61.247488 37.095424 114.444288 58.834944 147.478528 58.834944 29.018112 0 70.909952-17.713152 111.224832-47.527936 18.518016-12.914688 34.650112-28.207104 45.922304-41.119744 11.298816-12.88192 14.52032-20.932608 16.130048-24.15616-4.831232-8.884224-29.816832-37.091328-87.844864-77.37344-22.571008-16.130048-46.751744-30.625792-66.881536-41.089024-24.9856-12.908544-35.479552-15.32928-37.89824-16.136192-0.80896 0.806912-3.219456 3.227648-8.054784 10.469376-4.022272 7.274496-8.855552 17.739776-12.879872 28.2112-5.666816 12.101632-11.298816 24.981504-17.741824 35.477504-11.268096 16.101376-24.9856 24.958976-40.286208 24.958976-0.804864 0-0.804864 0-0.804864 0-8.07936 0-31.428608-0.804864-94.283776-43.501568-34.6624-24.184832-72.546304-54.810624-100.755456-82.210816l-0.804864-0.804864c-27.40224-28.207104-58.830848-66.07872-82.194432-100.726784-42.713088-63.66208-43.52-86.235136-43.52-94.30016-0.804864-16.115712 8.050688-29.802496 24.987648-41.089024 10.467328-6.453248 23.363584-12.091392 35.454976-17.727488 10.479616-4.040704 20.946944-8.869888 28.207104-13.70112 7.245824-4.038656 9.660416-6.455296 10.46528-7.26016-0.804864-2.414592-3.221504-12.896256-16.115712-38.672384-10.469376-19.3536-24.973312-43.52-41.091072-66.091008-40.298496-58.830848-68.5056-83.806208-77.361152-87.844864-3.23584 0.804864-11.286528 4.84352-24.182784 16.11776-13.70112 11.28448-28.207104 27.40224-41.10336 45.129728-29.81888 41.10336-47.546368 82.20672-47.546368 112.0256 0 32.233472 21.766144 86.233088 58.832896 147.480576 38.68672 62.84288 92.674048 130.555904 151.504896 191.000576L367.429632 663.631872 367.429632 663.631872z"
+                                        p-id="5162"></path>
+                                    <path
+                                        d="M664.014848 484.74112c-8.884224 0-16.93696-5.648384-18.546688-14.505984-4.028416-25.792512-18.550784-47.546368-41.089024-62.050304-22.573056-15.310848-49.975296-20.156416-77.379584-15.310848-9.660416 1.609728-19.335168-4.845568-20.946944-15.312896-1.622016-9.6768 4.831232-19.351552 14.508032-20.959232 37.062656-6.443008 74.12736 0.804864 103.944192 20.959232 30.625792 20.14208 50.782208 50.765824 57.22112 86.2208 1.609728 9.6768-4.831232 19.351552-14.493696 20.959232C665.624576 484.74112 664.817664 484.74112 664.014848 484.74112L664.014848 484.74112z"
+                                        p-id="5163"></path>
+                                    <path
+                                        d="M773.595136 438.001664c-8.8576 0-16.908288-6.455296-18.518016-15.312896-8.07936-49.168384-37.091328-91.062272-79.792128-120.07424-42.729472-28.209152-95.895552-38.688768-148.287488-29.81888-9.660416 2.414592-19.335168-4.84352-20.946944-14.505984-1.622016-9.6768 4.831232-19.351552 14.508032-20.96128 62.052352-11.272192 124.104704 1.609728 174.87872 35.467264 51.560448 33.841152 85.405696 84.609024 95.899648 143.439872 1.60768 10.479616-4.83328 19.349504-14.524416 21.766144C775.206912 438.001664 774.4 438.001664 773.595136 438.001664L773.595136 438.001664z"
+                                        p-id="5164"></path>
+                                    <path
+                                        d="M919.461888 424.302592c-8.050688 0-16.130048-6.457344-17.737728-15.312896-14.4896-83.818496-62.857216-156.350464-136.18176-203.894784-73.347072-48.351232-162.801664-66.883584-251.424768-50.767872-10.496 1.613824-19.351552-4.829184-21.768192-15.310848-1.609728-9.6768 5.638144-19.337216 15.312896-20.96128 98.322432-16.922624 196.632576 2.428928 278.034432 56.416256 81.375232 53.999616 135.380992 134.58432 152.30976 228.868096 1.613824 9.674752-4.85376 19.349504-15.31904 20.96128C921.882624 424.302592 921.07776 424.302592 919.461888 424.302592L919.461888 424.302592z"
+                                        p-id="5165"></path>
+                                </svg>
+                                <span>联系电话</span>
+                            </div>
+                            <p>0571-87572652/87572653</p>
+                        </div>
+                        <div class="HzCItem">
+                            <div class="HzCItemF">
+                                <svg t="1731898096443" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="7035" width="200" height="200">
+                                    <path
+                                        d="M896 128 128 128C57.408 128 0 185.408 0 256l0 512c0 70.592 57.408 128 128 128l768 0c70.592 0 128-57.408 128-128L1024 256C1024 185.408 966.592 128 896 128zM896 192c6.272 0 11.904 1.856 17.6 3.584L534.976 570.24C522.56 582.656 501.376 582.656 488.832 570.304L108.032 196.032C114.432 193.92 120.96 192 128 192L896 192zM960 768c0 35.328-28.672 64-64 64L128 832c-35.264 0-64-28.672-64-64L64 256c0-4.032 1.536-7.488 2.304-11.264l377.664 371.2c18.752 18.432 43.328 27.712 67.968 27.712 24.704 0 49.344-9.344 68.096-27.904l377.28-373.312C958.272 246.912 960 251.2 960 256L960 768z"
+                                        fill="#999999" p-id="7036"></path>
+                                </svg>
+                                <span>邮箱</span>
+                            </div>
+                            <p>opa@intl.zju.edu.cn</p>
+                        </div>
+                        <div class="HzCItem">
+                            <div class="HzCItemF">
+                                <svg t="1731898152616" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="8074" width="200" height="200">
+                                    <path
+                                        d="M512.704 614.608064a183.599971 183.599971 0 1 1 183.167971-183.183971 183.199971 183.199971 0 0 1-183.167971 183.183971z m0-293.311954a109.711983 109.711983 0 1 0 109.343983 110.079983 109.727983 109.727983 0 0 0-109.343983-110.063983z"
+                                        fill="#5F5F5F" p-id="8075"></path>
+                                    <path
+                                        d="M512.72 1024a36.383994 36.383994 0 0 1-23.743996-8.943999c-15.839998-14.175998-392.975939-351.999945-392.975939-583.999908C96.000065 193.13613 282.416036-0.01584 512-0.01584a400.175937 400.175937 0 0 1 159.055975 32.815995 37.151994 37.151994 0 0 1 19.439997 48.479992 34.975995 34.975995 0 0 1-46.783993 20.143997A333.295948 333.295948 0 0 0 512 74.576148c-189.99997 0-343.999946 160.351975-343.999946 356.495945 0 152.895976 230.319964 399.007938 343.999946 505.599921 114.431982-106.655983 343.999946-352.767945 343.999946-505.599921a369.007942 369.007942 0 0 0-79.887987-228.959965 37.711994 37.711994 0 0 1 4.319999-52.207991 34.655995 34.655995 0 0 1 50.383992 4.479999A442.063931 442.063931 0 0 1 927.999935 431.072093c0 231.999964-377.135941 569.807911-392.975939 583.999908a31.551995 31.551995 0 0 1-22.303996 8.927999z"
+                                        fill="#5F5F5F" p-id="8076"></path>
+                                </svg>
+                                <span>地址</span>
+                            </div>
+                            <p>浙江省海宁市海州东路718号</p>
+                        </div>
+                    </div>
+                    <a target="_blank" href="https://www.intl.zju.edu.cn/zh-hans/about/campus-map" class="HzCBtn">
+                        来校指引
+                    </a>
+                </div>
+                <div class="HzCIcon">
+                    <img src="./images/hzCIcon.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var HzNSwiper = new Swiper(".HzNSwiper", {
+            slidesPerView:  2.5,
+            // centeredSlides: true,
+            speed: 800,
+            // spaceBetween: 30,
+            loop: true,
+            // autoplay: {
+            //     delay: 5000,
+            //     stopOnLastSlide: false,
+            //     disableOnInteraction: true,
+            // },
+            navigation: {
+                nextEl: '.HzNSwiper_next',
+                prevEl: '.HzNSwiper_prev',
+            },
+        });
+    </script>
+    <div class="fooder">
+        <img src="./images/foodimg.png" alt="">
+    </div>
+    <script>
+        var map = new BMap.Map('conmAP'); // 创建Map实例
+        //map.centerAndZoom('杭州市', 18); // 初始化地图,设置中心点坐标和地图级别
+        map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放		
+        // 用经纬度设置地图中心点
+        var point = new BMap.Point(120.72575704723761, 30.519084914622518);
+        map.centerAndZoom(point, 16);
+        var label = new BMap.Marker(new BMap.Point(120.49046, 30.35927));
+        map.addOverlay(label);//禁止缩放
+        // map.disableDragging();     //禁止拖拽
+    </script>
+    <script src="js/wow.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+<script>
+    function formatDateToYmd(isoDateString) {
+        // 创建一个 Date 对象
+        const date = new Date(isoDateString);
+
+        // 提取年份、月份和日期
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始，所以需要加1
+        const day = String(date.getDate()).padStart(2, '0');
+
+        // 返回格式化后的字符串
+        return `${year}-${month}-${day}`;
+    }
+    function fetchDatanews(){
+        $.ajax({
+            url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/news?filter[status]=1&sort=-created&include=field_image&page[limit]=6",
+            method: 'GET',
+            dataType: 'json',
+            timeout: 0, // 0 表示无超时限制
+            beforeSend: function(xhr) {
+                // 如果需要可以添加请求头
+                // xhr.setRequestHeader('Header-Name', 'value');
+            }
+        }).
+        then(function(response) {
+            console.log(response)
+            var dataa=response.data
+            var picarr=response.included
+            for (var i = 0; i < dataa.length; i++) {
+                var url="https://www.intl.zju.edu.cn/"+dataa[i]['attributes']['path']['langcode']+dataa[i]['attributes']['path']['alias']
+                var pic="https://www.intl.zju.edu.cn"+picarr[i]['attributes']['uri']['url']
+                pic=pic.replace('/files', "/files/styles/360_245/public");
+                var time=formatDateToYmd(dataa[i]['attributes']['changed']);
+                $('.newWList').append("<div class=\"swiper-slide HzNItem\">\n" +
+                    "                        <a href=\""+url+"\" target='_blank' class=\"\">\n" +
+                    "                            <div class=\"HzNImg\">\n" +
+                    "                                <img src=\""+pic+"\" alt=\"\">\n" +
+                    "                            </div>\n" +
+                    "                            <div class=\"HzNTbox\">\n" +
+                    "                                <div class=\"HzNTime\">\n" +time +
+                    "                                </div>\n" +
+                    "                                <div class=\"HzNTit\">\n" +dataa[i]['attributes']['title']+
+                    "                                </div>\n" +
+                    "                                <div class=\"HzNText\">\n"+dataa[i]['attributes']['body']['summary']+
+                    "                                </div>\n" +
+                    "                            </div>\n" +
+                    "                        </a>\n" +
+                    "                    </div>");
+
+            }
+            HzNSwiper.update(true)
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合作院校</title>
+    <link rel="stylesheet" href="./css/yushang.css">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/number.js"></script>
+    <script src="./js/jquery.slimscroll.min.js"></script>
+</head>
+<script>
+    $(document).ready(function (){
+        fetchData();
+        fetchDatanews();
+    })
+</script>
+
+<body>
+    <style>
+        .header {
+            width: 100%;
+        }
+
+        .header img {
+            width: 100%;
+        }
+
+        .fooder {
+            width: 100%;
+        }
+
+        .fooder img {
+            width: 100%;
+        }
+
+        .heRLeft {
+            width: 400px;
+        }
+
+        .Tit p {
+            font-size: 38px;
+            line-height: 1;
+            color: #192E5F;
+            font-weight: 500;
+        }
+
+        .BanBox {
+            position: relative;
+            height: 650px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .BanBox img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+    </style>
+    <div class="header">
+        <img src="./images/headimg.png" alt="">
+    </div>
+    <div class="BanBox appImg">
+        <img src="./images/banBg.jpg" alt="">
+    </div>
+    <style>
+        .copWBox {
+            position: relative;
+        }
+
+        .copWTop {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copWTList {
+            display: flex;
+            align-items: center;
+        }
+
+        .copWTItem {
+            padding: 0 40px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 50px;
+            border: 1px solid rgb(0, 0, 0, .1);
+            border-radius: 50px;
+            line-height: 1;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: all 0.48s;
+        }
+
+        .copWTItem:hover {
+            background: rgb(25, 46, 95, .3);
+        }
+
+        .copWTItemAct {
+            background: #192E5F;
+            color: #fff;
+        }
+
+        .copWTItemAct:hover {
+            background: #192E5F;
+            color: #fff;
+        }
+
+        .copWList {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 70px;
+            border-top: 1px solid rgb(0, 0, 0, .1);
+        }
+
+        .copWItem {
+            width: 25%;
+            padding: 30px;
+            border: 1px solid rgb(0, 0, 0, .1);
+            border-left: none;
+            border-top: none;
+        }
+
+        /* .copWItem:nth-child(1),
+        .copWItem:nth-child(2),
+        .copWItem:nth-child(3),
+        .copWItem:nth-child(4) {
+            border-top: 1px solid rgb(0, 0, 0, .1);
+        } */
+
+        .copWItem:nth-child(4n+1) {
+            border-left: 1px solid rgb(0, 0, 0, .1);
+        }
+
+        .copWImg {
+            width: 100%;
+            padding-top: 40%;
+            position: relative;
+            transition: all 0.48s;
+        }
+
+        .copWImg img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .copWTit {
+            font-size: 20px;
+            text-align: center;
+            color: #192E5F;
+        }
+
+        .copWBtn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            opacity: 0;
+            transition: all 0.48s;
+        }
+
+        .copWBtn span {
+            font-size: 16px;
+            color: #192e5f;
+        }
+
+        .copWBtn image {
+            width: 30px;
+            margin-left: 8px;
+        }
+
+        .copWItem a {
+            transform: translateY(20px);
+            transition: all 0.48s;
+            display: block;
+        }
+
+        .copWItem:hover a {
+            transform: translateY(0);
+        }
+
+        .copWItem:hover .copWBtn {
+            opacity: 1;
+        }
+
+        .copWItem:hover .copWImg {
+            transform: scale(0.9);
+        }
+
+        .copWRig {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .copWXl {
+            width: 250px;
+            height: 55px;
+            border: 1px solid rgb(0, 0, 0, .1);
+            border-radius: 50px;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.48s;
+            position: relative;
+            z-index: 6;
+            margin-right: 10px;
+            background: #192E5F;
+        }
+
+        .copWXl::after {
+            width: 100%;
+            height: 10px;
+            position: absolute;
+            left: 0;
+            top: calc(100% - 1px);
+            content: '';
+        }
+
+        .copWXl:hover {
+            background: #192E5F;
+        }
+
+        .copWXl:hover span {
+            color: #fff;
+        }
+
+        .copWXl svg path {
+            fill: #fff;
+        }
+
+        .copWXl span {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .copWXl svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .copWXlBox {
+            width: 100%;
+            background: #192E5F;
+            position: absolute;
+            left: 0;
+            top: calc(100% + 2px);
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 10px 0;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .copWXlBox a {
+            padding: 18px 0;
+            display: block;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1;
+            color: #fff;
+            border-bottom: 1px solid rgb(255, 255, 255, .1);
+        }
+
+        .copWXlBox a:last-child {
+            border-bottom: none;
+        }
+
+        .copWTCz {
+            padding: 0 40px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 50px;
+            border: 1px solid rgb(0, 0, 0, .1);
+            border-radius: 50px;
+            line-height: 1;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: all 0.48s;
+            background: #192E5F;
+            color: #fff;
+        }
+        .copWTList{
+        display: flex;
+    }
+    .copWXl2{
+        display: none;
+    }
+        @media(max-width:1680px) {
+            .copWTItem {
+                padding: 0 32px;
+                height: 45px;
+            }
+
+            .copWXl {
+                width: 230px;
+                height: 50px;
+            }
+
+            .copWXlBox a {
+                padding: 12px 0;
+                font-size: 14px;
+            }
+        }
+
+        @media(max-width:1468px) {
+            .copWTit {
+                font-size: 18px;
+            }
+
+            .copWList {
+                margin-top: 50px;
+            }
+
+            .copWTop {
+                margin-top: 30px;
+            }
+        }
+
+        @media(max-width:1200px) {
+            .copWItem {
+                width: 33.3%;
+            }
+
+            .copWItem:nth-child(4n+1) {
+                border-left: none;
+            }
+
+            .copWItem:nth-child(3n+1) {
+                border-left: 1px solid rgb(0, 0, 0, .1);
+            }
+
+            .copWTop {
+                flex-wrap: wrap;
+            }
+
+            .copWTList {
+                width: 100%;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+
+
+        }
+
+        @media(max-width:768px) {
+            .copWTItem {
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+
+            .copWTList {
+                margin-bottom: 0;
+            }
+
+            .copWTItem {
+                padding: 0 25px;
+                height: 42px;
+            }
+
+            .copWItem {
+                width: 50%;
+            }
+
+            .copWItem:nth-child(3n+1) {
+                border-left: none;
+            }
+
+            .copWItem:nth-child(2n+1) {
+                border-left: 1px solid rgb(0, 0, 0, .1);
+            }
+        }
+        @media(max-width:680px){
+            .copWXl {
+        width: 100%;
+        height: 60px;
+    }
+    .copWTList{
+        display: none;
+    }
+    .copWXl2{
+        display: flex;
+        margin-bottom: 15px;
+    }
+    .copWXlBox a {
+        padding: 16px 0;
+    }
+        }
+        @media(max-width:500px) {
+            .copWItem {
+                width: 100%;
+            }
+
+            .copWItem:nth-child(2n+1) {
+                border-left: none;
+            }
+
+            .copWItem:nth-child(1n+1) {
+                border-left: 1px solid rgb(0, 0, 0, .1);
+            }
+            .copWXl {
+        width: 100%;
+        height: 50px;
+    }
+        }
+    </style>
+    <div class="copWBox padd">
+        <div class="inner">
+            <div class="Tit white wgt-fade-animate">
+                <p>合作院校</p>
+            </div>
+            <div class="copWTop wgt-fade-animate">
+                <div class="copWTList wgt-fade-animate" id="zhou">
+
+                </div>
+                <div class="copWXl copWXl2">
+                    <span id="zhouname">欧洲</span>
+                    <svg t="1731134146465" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="13627" width="200" height="200">
+                        <path
+                            d="M957.463608 326.608639 541.393447 753.98224l0 0-29.720905 30.527271-29.718859-30.527271 0 0L65.883523 326.608639l29.718859-30.525224 416.07016 427.370531 416.07016-427.370531L957.463608 326.608639z"
+                            fill="#2A2B2B" p-id="13628"></path>
+                    </svg>
+                    <div class="copWXlBox" id="zhoua">
+
+                    </div>
+                </div>
+                <div class="copWRig wgt-fade-animate">
+                    <div class="copWXl copWXl1">
+                        <span class="guojianame">选择国家</span>
+                        <svg t="1731134146465" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="13627" width="200" height="200">
+                            <path
+                                d="M957.463608 326.608639 541.393447 753.98224l0 0-29.720905 30.527271-29.718859-30.527271 0 0L65.883523 326.608639l29.718859-30.525224 416.07016 427.370531 416.07016-427.370531L957.463608 326.608639z"
+                                fill="#2A2B2B" p-id="13628"></path>
+                        </svg>
+                        <div class="copWXlBox guojia">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copWList" id="yuanxiao">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.copWXl').hover(function () {
+            $(this).find('.copWXlBox').slideDown()
+        }, function () {
+            $(this).find('.copWXlBox').slideUp()
+        });
+    </script>
+    <style>
+        .newWBox {
+            position: relative;
+            background: #f7f8f9;
+        }
+
+        .newWList {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 70px;
+        }
+
+        .newWItem {
+            width: calc(33.3% - 20px);
+            margin-right: 30px;
+            margin-bottom: 30px;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .newWItem:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        .newWTime {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .newWImg {
+            width: 100%;
+            padding-top: 65%;
+            border-radius: 20px;
+            position: relative;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .newWImg img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 0.48s;
+        }
+
+        .newWItem:hover .newWImg img {
+            transform: scale(1.1);
+        }
+
+        .newWTit {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #192E5F;
+            font-weight: 600;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .newWTbox {
+            padding: 20px 10px;
+        }
+
+        @media(max-width:1468px) {
+            .newWItem {
+                width: calc(33.3% - 15px);
+                margin-right: 22.5px;
+                margin-bottom: 22.5px;
+            }
+            .newWTbox{
+                padding: 20px 0;
+            }
+            .newWTit {
+                font-size: 18px;
+            }
+            .newWTime {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.newWList{
+    margin-top: 50px;
+}
+.BanBox{
+                height: 550px;
+            }
+        }
+        @media(max-width:1024px) {
+            .newWItem {
+                width: calc(50% - 15px);
+                margin-right: 20px;
+                margin-bottom: 20px;
+            }
+            .newWItem:nth-child(3n) {
+                margin-right: 20px;
+            }
+            .newWItem:nth-child(2n) {
+                margin-right: 0;
+            }
+            .Tit p {
+                font-size: 32px;
+            }
+            .BanBox{
+                height: 450px;
+            }
+        }
+        @media(max-width:680px) {
+            .BanBox{
+                height: 360px;
+            }
+            .copWList {
+        margin-top: 30px;
+    }
+            .copWRig{
+                width: 100%;
+            }
+            .newWItem {
+                width: 100%;
+                margin-right: 0 !important;
+                margin-bottom: 20px;
+            }
+            .Tit p {
+                font-size: 28px;
+            }
+            .newWList {
+                margin-top: 30px;
+            }
+            .copWTItem {
+        padding: 0 20px;
+        height: 38px;
+    }
+        }
+        @media(max-width:500px){
+            .Tit p {
+                font-size: 24px;
+            }
+        }
+    </style>
+    <div class="newWBox padd">
+        <div class="inner">
+            <div class="Tit white wgt-fade-animate">
+                <p>新闻资讯</p>
+            </div>
+            <div class="newWList">
+
+            </div>
+        </div>
+    </div>
+    <style>
+        .copFBox {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 9;
+            background: #1C3557;
+            scrollbar-width: none;
+            overflow-y: auto;
+            transform: translateX(100vw);
+            transition: all 0.8s;
+        }
+
+        .copFBox.copFBoxAct {
+            transform: translateX(0);
+        }
+
+        .copFBox .inner {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+
+        }
+
+        .copFLeft {
+            position: relative;
+
+        }
+
+        .copFImgBox {
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgb(255, 255, 255, .1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .copFImgBox img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* background: #fff; */
+        }
+
+        .copFLeft p {
+            font-size: 24px;
+            color: #fff;
+            margin-top: 20px;
+            opacity: .8;
+        }
+
+        .copFBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            opacity: .8;
+            cursor: pointer;
+            width: 150px;
+            height: 50px;
+            background: #fff;
+            border: 1px solid rgb(255, 255, 255, .3);
+            border-radius: 50px;
+            transition: all 0.48s;
+        }
+
+        .copFBtn:hover {
+            background: #fff;
+            opacity: 1;
+        }
+
+        .copFBtn:hover span {
+            color: #192E5F;
+        }
+
+        .copFBtn span {
+            font-size: 16px;
+            color: #192E5F;
+            transition: all 0.48s;
+        }
+
+        .copFBtn svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        .copFBtn svg path {
+            fill: #fff;
+        }
+
+        .copFBtn:hover svg path {
+            fill: #192E5F;
+        }
+
+        .copFRig {
+            width: calc(100% - 600px);
+            padding-top: 8%;
+        }
+
+        .copFText p {
+            font-size: 18px;
+            color: #fff;
+            opacity: .8;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .copFImg {
+            width: 100%;
+        }
+
+        .copFImg img {
+            width: 100%;
+        }
+
+        .copFTbox {
+            position: sticky;
+            top: 20%;
+        }
+
+        .copHList {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .copHItem:first-child {
+            border-top: 1px solid rgb(255, 255, 255, .1);
+        }
+
+        .copHItem {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgb(255, 255, 255, .1);
+        }
+
+        .copHItem span {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .copHItem span:nth-child(1) {
+            opacity: .6;
+        }
+
+        .copHLogo {
+            width: 200px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .copHLogo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        @media(max-width:1468px) {
+            .copFText p {
+                font-size: 16px;
+            }
+            .copHItem span {
+                font-size: 16px;
+            }
+        }
+        @media(max-width:1280px) {
+            .copFImgBox {
+    width: 400px;
+    height: 400px;
+            }
+            .copFRig {
+    width: calc(100% - 450px);
+    padding-top: 0%;
+}
+.copHList {
+    position: relative;
+    margin-bottom: 30px;
+}
+        }
+        @media(max-width:1024px){
+            .copFBox .inner{
+                height: 100%;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            .copFLeft {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.copFRig {
+        width: 100%;
+    }
+    .copFImgBox {
+        width: 300px;
+        height: 300px;
+    }
+    .copFTbox {
+    position: relative;
+    top: 0;
+}
+        }
+        @media(max-width:768px){
+            .copFText p {
+        font-size: 14px;
+    }
+    .copHItem span {
+        font-size: 14px;
+    }
+    .copHLogo {
+    width: 180px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+.copFBtn {
+    width: 130px;
+    height: 50px;
+}
+.copHItem{
+    padding: 15px 0;
+}
+.copFRig{
+    padding-bottom: 30px;
+}
+.copFImgBox {
+        width: 100%;
+        height: 300px;
+    }
+        }
+        @media(max-width:500px){
+            .copHItem span {
+        font-size: 13px;
+    }
+    
+    .copHLogo {
+        width: 150px;
+        height: 40px;
+        margin-bottom: 0;
+    }
+    .copWTItem {
+        margin-right: 12px;
+    }
+    
+        }
+    </style>
+    <div class="copFBox">
+        <div class="inner padd">
+            <div class="copFLeft">
+                <div class="copFTbox">
+                    <div class="copFImgBox">
+                        <img src="./images/copFImg.webp" class="pic" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="copFRig">
+                <div class="copHList">
+                    <div class="copHLogo">
+                        <img src="./images/copFlogo1.svg" class="logo" alt="">
+                    </div>
+                    <div class="copHItem">
+                        <span> 协议类型:</span>
+                        <span class="xy"></span>
+                    </div>
+                    <div class="copHItem">
+                        <span> 合作单位名称:</span>
+                        <span class="title"> </span>
+                    </div>
+<!--                    <div class="copHItem">-->
+<!--                        <span> 合作单位名称（外文）:</span>-->
+<!--                        <span> University of Cambridge</span>-->
+<!--                    </div>-->
+                </div>
+<!--                <div class="copFText">-->
+<!--                    <p>剑桥大学（University of Cambridge），简称“剑桥”，是一所坐落于英国剑桥郡剑桥市采用传统学院制的顶尖研究型大学 [2] [63]。学校是罗素大学集团、全球大学校长论坛-->
+<!--                        [56]、全球大学高研院联盟、国际应用科技开发协作网、剑桥大学医疗伙伴联盟成员 [6-10]，衍育了科技聚集地“硅沼（Silicon Fen）”，被誉为“金三角名校”、“G5大学” [1-3]-->
+<!--                    </p>-->
+<!--                    <p>-->
+<!--                        剑桥大学是英语世界中第二古老的大学，也是世界现存第四古老的大学，前身是一个于1209年成立的学者协会-->
+<!--                        [1-2]，设八座文理博物馆，馆藏逾1500万册的图书馆系统及全球最古老的出版社，即剑桥大学出版社 [11-12] [48]。-->
+<!--                    </p>-->
+<!--                </div>-->
+                <div class="copFBtn">
+                    <!-- <svg t="1732527053818" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5071" width="200" height="200"><path d="M170.666667 477.866667L349.866667 298.666667l29.866666 29.866666-149.333333 149.333334h669.866667v42.666666H128l42.666667-42.666666z" fill="#444444" p-id="5072"></path></svg> -->
+                    <span>返回</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fooder">
+        <img src="./images/foodimg.png" alt="">
+    </div>
+    <script>
+
+        $('.copFBtn').click(function () {
+            console.log('111')
+            $('.copFBox').removeClass('copFBoxAct')
+        })
+    </script>
+</body>
+<script>
+    function getQueryParams(url) {
+        var params = {};
+        var queryString = url.split('?')[1]; // 获取查询字符串部分
+        var pairs = queryString.split('&'); // 将查询字符串分割成键值对
+        for (var i = 0; i < pairs.length; i++) {
+            var pair = pairs[i].split('='); // 分割键值对
+            var key = decodeURIComponent(pair[0]); // 解码键名
+            var value = decodeURIComponent(pair[1] || ''); // 解码值，如果没有值则默认为空字符串
+            params[key] = value; // 将键值对添加到对象中
+        }
+        return params;
+    }
+    function fetchData() {
+        var url=window.location.search
+        var params = new URLSearchParams(url);
+        var param1 = params.get('id')?params.get('id'):0
+        console.log(params)
+        console.log(param1)
+        $.ajax({
+            url: "https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?page[offset]=0&page[limit]=6",
+            method: 'GET',
+            dataType: 'json',
+            timeout: 0, // 0 表示无超时限制
+            beforeSend: function(xhr) {
+                // 如果需要可以添加请求头
+                // xhr.setRequestHeader('Header-Name', 'value');
+            }
+        }).then(function(response) {
+            // 自动解析 JSON 数据（因为指定了 dataType: 'json'）
+            var data=response.data
+            console.log(data)
+            var onzhou='';
+            for (var i = 0; i < data.length; i++) {
+                if(i===param1){
+                    onzhou=data[i]['id']
+                    $("#zhou").append("<div class=\"copWTItem copWTItemAct\"  data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"'>"+data[i]['attributes']['name']+"</div>")
+                    $('#zhouname').text(data[i]['attributes']['name'])
+                }else{
+                    $("#zhou").append("<div class=\"copWTItem \"  data-id='"+data[i]['id']+"'>"+data[i]['attributes']['name']+"</div>")
+                }
+                $("#zhoua").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"'>"+data[i]['attributes']['name']+"</a>")
+            }
+            $.ajax({
+                url: "https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]="+onzhou,
+                method: 'GET',
+                dataType: 'json',
+                timeout: 0, // 0 表示无超时限制
+                beforeSend: function(xhr) {
+                    // 如果需要可以添加请求头
+                    // xhr.setRequestHeader('Header-Name', 'value');
+                }
+            }).
+            then(function(response) {
+                var data=response.data
+                console.log(response)
+                var ongj='';
+                for (var i = 0; i < data.length; i++) {
+                    if(i===0){
+                        ongj=data[i]['id']
+                    }
+                    $(".guojia").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"'>"+data[i]['attributes']['name']+"</a>")
+                    $.ajax({
+                        url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+data[i]['id']+"&include=field_cooperation_logo",
+                        method: 'GET',
+                        dataType: 'json',
+                        timeout: 0, // 0 表示无超时限制
+                        beforeSend: function(xhr) {
+                            // 如果需要可以添加请求头
+                            // xhr.setRequestHeader('Header-Name', 'value');
+                        }
+                    }).
+                    then(function(response) {
+                        var dataa=response.data
+                        var inc=response.included
+                        console.log(response)
+
+                        // var ongj='';
+                        for (var i = 0; i < dataa.length; i++) {
+                            var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                            var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                            $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                                " data-logo='"+pic+"'"+
+                                " data-pic='"+pica+"'"+
+                                " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
+                                " data-title='"+dataa[i]['attributes']['title']+"'"+
+                                " data-etitle='"+dataa[i]['attributes']['title']+"'"+
+                                " data-id='"+dataa[i]['id']+"'>\n" +
+                                "                    <a href=\"javaScript:;\">\n" +
+                                "                        <div class=\"copWImg\">\n" +
+                                "                            <img src=\""+pic+"\" alt=\"\">\n" +
+                                "                        </div>\n" +
+                                "                        <div class=\"copWTit\">\n" +
+                                dataa[i]['attributes']['title']+
+                                "                        </div>\n" +
+                                "                        <div class=\"copWBtn\">\n" +
+                                "                            <span>查看更多</span>\n" +
+                                "                            <img src=\"./images/jt.png\" alt=\"\">\n" +
+                                "                        </div>\n" +
+                                "                    </a>\n" +
+                                "                </div>")
+                        }
+                    })
+                }
+            })
+
+        })
+    }
+    function formatDateToYmd(isoDateString) {
+        // 创建一个 Date 对象
+        const date = new Date(isoDateString);
+
+        // 提取年份、月份和日期
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始，所以需要加1
+        const day = String(date.getDate()).padStart(2, '0');
+
+        // 返回格式化后的字符串
+        return `${year}-${month}-${day}`;
+    }
+    function fetchDatanews(){
+        $.ajax({
+            url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/news?filter[status]=1&sort=-created&include=field_image&page[limit]=6",
+            method: 'GET',
+            dataType: 'json',
+            timeout: 0, // 0 表示无超时限制
+            beforeSend: function(xhr) {
+                // 如果需要可以添加请求头
+                // xhr.setRequestHeader('Header-Name', 'value');
+            }
+        }).
+        then(function(response) {
+            console.log(response)
+            var dataa=response.data
+            var picarr=response.included
+            for (var i = 0; i < dataa.length; i++) {
+                var url="https://www.intl.zju.edu.cn/"+dataa[i]['attributes']['path']['langcode']+dataa[i]['attributes']['path']['alias']
+                var pic="https://www.intl.zju.edu.cn"+picarr[i]['attributes']['uri']['url']
+                pic=pic.replace('/files', "/files/styles/360_245/public");
+                var time=formatDateToYmd(dataa[i]['attributes']['changed']);
+                $('.newWList').append("<div class=\"newWItem wgt-fade-animate\">\n" +
+                    "                    <a href=\""+url+"\" target='_blank'>\n" +
+                    "                        <div class=\"newWImg\">\n" +
+                    "                            <img src=\""+pic+"\" alt=\"\">\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"newWTbox\">\n" +
+                    "                            <div class=\"newWTime\">\n" +time +
+                    "                            </div>\n" +
+                    "                            <div class=\"newWTit\">\n" +dataa[i]['attributes']['title']+
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                    </a>\n" +
+                    "                </div>")
+            }
+        })
+    }
+    $("#zhoua").on('click','a',function (){
+        $(".guojianame").text("选择国家")
+        var id=$(this).attr('data-id')
+        $.ajax({
+            url: "https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]="+id,
+            method: 'GET',
+            dataType: 'json',
+            timeout: 0, // 0 表示无超时限制
+            beforeSend: function(xhr) {
+                // 如果需要可以添加请求头
+                // xhr.setRequestHeader('Header-Name', 'value');
+            }
+        }).
+        then(function(response) {
+            var data=response.data
+            console.log(response)
+            var ongj='';
+            $(".guojia").html("");
+            for (var i = 0; i < data.length; i++) {
+                if(i===0){
+                    ongj=data[i]['id']
+                }
+                $(".guojia").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"'>"+data[i]['attributes']['name']+"</a>")
+                $.ajax({
+                    url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+data[i]['id']+"&include=field_cooperation_logo",
+                    method: 'GET',
+                    dataType: 'json',
+                    timeout: 0, // 0 表示无超时限制
+                    beforeSend: function(xhr) {
+                        // 如果需要可以添加请求头
+                        // xhr.setRequestHeader('Header-Name', 'value');
+                    }
+                }).
+                then(function(response) {
+                    var dataa=response.data
+                    var inc=response.included
+                    console.log(response)
+                    $("#yuanxiao").html("");
+                    // var ongj='';
+                    for (var i = 0; i < dataa.length; i++) {
+                        var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                        var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                        $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                            " data-logo='"+pic+"'"+
+                            " data-pic='"+pica+"'"+
+                            " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
+                            " data-title='"+dataa[i]['attributes']['title']+"'"+
+                            " data-etitle='"+dataa[i]['attributes']['title']+"'"+
+                            " data-id='"+dataa[i]['id']+"'>\n" +
+                            "                    <a href=\"javaScript:;\">\n" +
+                            "                        <div class=\"copWImg\">\n" +
+                            "                            <img src=\""+pic+"\" alt=\"\">\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"copWTit\">\n" +
+                            dataa[i]['attributes']['title']+
+                            "                        </div>\n" +
+                            "                        <div class=\"copWBtn\">\n" +
+                            "                            <span>查看更多</span>\n" +
+                            "                            <img src=\"./images/jt.png\" alt=\"\">\n" +
+                            "                        </div>\n" +
+                            "                    </a>\n" +
+                            "                </div>")
+                    }
+                })
+            }
+        })
+    })
+    $("#zhou").on('click','.copWTItem',function (){
+        $(".guojianame").text("选择国家")
+        var id=$(this).attr('data-id')
+        $(this).addClass('copWTItemAct').siblings().removeClass('copWTItemAct')
+        $.ajax({
+            url: "https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]="+id,
+            method: 'GET',
+            dataType: 'json',
+            timeout: 0, // 0 表示无超时限制
+            beforeSend: function(xhr) {
+                // 如果需要可以添加请求头
+                // xhr.setRequestHeader('Header-Name', 'value');
+            }
+        }).
+        then(function(response) {
+            var data=response.data
+            console.log(response)
+            var ongj='';
+            $(".guojia").html("");
+            for (var i = 0; i < data.length; i++) {
+                if(i===0){
+                    ongj=data[i]['id']
+                }
+                $(".guojia").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"' >"+data[i]['attributes']['name']+"</a>")
+                $.ajax({
+                    url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+data[i]['id']+"&include=field_cooperation_logo",
+                    method: 'GET',
+                    dataType: 'json',
+                    timeout: 0, // 0 表示无超时限制
+                    beforeSend: function(xhr) {
+                        // 如果需要可以添加请求头
+                        // xhr.setRequestHeader('Header-Name', 'value');
+                    }
+                }).
+                then(function(response) {
+                    var dataa=response.data
+                    var inc=response.included
+                    console.log(response)
+                    $("#yuanxiao").html("");
+                    // var ongj='';
+                    for (var i = 0; i < dataa.length; i++) {
+                        var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                        var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                        $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                            " data-logo='"+pic+"'"+
+                            " data-pic='"+pica+"'"+
+                            " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
+                            " data-title='"+dataa[i]['attributes']['title']+"'"+
+                            " data-etitle='"+dataa[i]['attributes']['title']+"'"+
+                            " data-id='"+dataa[i]['id']+"'>\n" +
+                            "                    <a href=\"javaScript:;\">\n" +
+                            "                        <div class=\"copWImg\">\n" +
+                            "                            <img src=\""+pic+"\" alt=\"\">\n" +
+                            "                        </div>\n" +
+                            "                        <div class=\"copWTit\">\n" +
+                            dataa[i]['attributes']['title']+
+                            "                        </div>\n" +
+                            "                        <div class=\"copWBtn\">\n" +
+                            "                            <span>查看更多</span>\n" +
+                            "                            <img src=\"./images/jt.png\" alt=\"\">\n" +
+                            "                        </div>\n" +
+                            "                    </a>\n" +
+                            "                </div>")
+                    }
+                })
+            }
+        })
+    })
+    $(".guojia").on('click','a',function (){
+        var id=$(this).attr('data-id')
+        $(".guojianame").text($(this).attr('data-title'))
+        $.ajax({
+            url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+id+"&include=field_cooperation_logo",
+            method: 'GET',
+            dataType: 'json',
+            timeout: 0, // 0 表示无超时限制
+            beforeSend: function(xhr) {
+                // 如果需要可以添加请求头
+                // xhr.setRequestHeader('Header-Name', 'value');
+            }
+        }).
+        then(function(response) {
+            var dataa=response.data
+            var inc=response.included
+            console.log(response)
+            $("#yuanxiao").html("");
+            // var ongj='';
+            for (var i = 0; i < dataa.length; i++) {
+                var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
+                $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                    " data-logo='"+pic+"'"+
+                    " data-pic='"+pica+"'"+
+                    " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
+                    " data-title='"+dataa[i]['attributes']['title']+"'"+
+                    " data-etitle='"+dataa[i]['attributes']['title']+"'"+
+                    " data-id='"+dataa[i]['id']+"'>\n" +
+                    "                    <a href=\"javaScript:;\">\n" +
+                    "                        <div class=\"copWImg\">\n" +
+                    "                            <img src=\""+pic+"\" alt=\"\">\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"copWTit\">\n" +
+                    dataa[i]['attributes']['title']+
+                    "                        </div>\n" +
+                    "                        <div class=\"copWBtn\">\n" +
+                    "                            <span>查看更多</span>\n" +
+                    "                            <img src=\"./images/jt.png\" alt=\"\">\n" +
+                    "                        </div>\n" +
+                    "                    </a>\n" +
+                    "                </div>")
+            }
+        })
+    })
+    // $('.copWItem').click(function () {
+    $("#yuanxiao").on("click",'.copWItem',function (){
+        console.log('111')
+        $('.copFBox .pic').attr("src",$(this).attr('data-pic'))
+        $('.copFBox .logo').attr("src",$(this).attr('data-logo'))
+        $('.copFBox .title').text($(this).attr('data-title'))
+        $('.copFBox .xy').text($(this).attr('data-xy'))
+        $('.copFBox').addClass('copFBoxAct')
+    })
+</script>
+</html>
