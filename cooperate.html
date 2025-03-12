@@ -976,7 +976,7 @@
             var onzhou='';
             for (var i = 0; i < data.length; i++) {
                    console.log(i)
-                if((i+1)===Number(param1)){
+                if(i===Number(param1)){
                     onzhou=data[i]['id']
                     $("#zhou").append("<div class=\"copWTItem copWTItemAct\"  data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"'>"+data[i]['attributes']['name']+"</div>")
                     $('#zhouname').text(data[i]['attributes']['name'])
