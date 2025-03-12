@@ -1441,24 +1441,7 @@
             </div>
         </div>
     </div>
-    <script>
-        var HzNSwiper = new Swiper(".HzNSwiper", {
-            slidesPerView:  2.5,
-            // centeredSlides: true,
-            speed: 800,
-            // spaceBetween: 30,
-            loop: true,
-            // autoplay: {
-            //     delay: 5000,
-            //     stopOnLastSlide: false,
-            //     disableOnInteraction: true,
-            // },
-            navigation: {
-                nextEl: '.HzNSwiper_next',
-                prevEl: '.HzNSwiper_prev',
-            },
-        });
-    </script>
+    
     <div class="fooder">
         <img src="./images/foodimg.png" alt="">
     </div>
@@ -1478,6 +1461,27 @@
         new WOW().init();
     </script>
 </body>
+<script>
+    var HzNSwiper = new Swiper(".HzNSwiper", {
+        slidesPerView:  2.5,
+        // centeredSlides: true,
+        speed: 800,
+        // spaceBetween: 30,
+        loop: true,
+        breakpoints: {
+            680: {
+                slidesPerView: 2,
+            },
+            300:{
+                slidesPerView: 1,
+            }
+        },
+        navigation: {
+            nextEl: '.HzNSwiper_next',
+            prevEl: '.HzNSwiper_prev',
+        },
+    });
+</script>
 <script>
     function formatDateToYmd(isoDateString) {
         // 创建一个 Date 对象
@@ -1531,5 +1535,7 @@
             HzNSwiper.update(true)
         })
     }
+    
 </script>
+
 </html>

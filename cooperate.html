@@ -273,7 +273,14 @@
             max-height: 300px;
             overflow-y: auto;
         }
-
+        .copWXlBox::before{
+            width: 100%;
+            height: 30px;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -25px;
+        }
         .copWXlBox a {
             padding: 18px 0;
             display: block;
@@ -673,9 +680,9 @@
         }
 
         .copFImgBox img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
             /* background: #fff; */
         }
 
@@ -929,8 +936,8 @@
     <script>
 
         $('.copFBtn').click(function () {
-            console.log('111')
             $('.copFBox').removeClass('copFBoxAct')
+            document.body.style.overflow = 'auto';
         })
     </script>
 </body>
@@ -968,7 +975,8 @@
             console.log(data)
             var onzhou='';
             for (var i = 0; i < data.length; i++) {
-                if(i===param1){
+                   console.log(i)
+                if((i+1)===Number(param1)){
                     onzhou=data[i]['id']
                     $("#zhou").append("<div class=\"copWTItem copWTItemAct\"  data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"'>"+data[i]['attributes']['name']+"</div>")
                     $('#zhouname').text(data[i]['attributes']['name'])
@@ -1015,7 +1023,7 @@
                         for (var i = 0; i < dataa.length; i++) {
                             var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
                             var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                            $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                            $("#yuanxiao").append("<div class=\"copWItem \"" +
                                 " data-logo='"+pic+"'"+
                                 " data-pic='"+pica+"'"+
                                 " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
@@ -1074,7 +1082,7 @@
                 var pic="https://www.intl.zju.edu.cn"+picarr[i]['attributes']['uri']['url']
                 pic=pic.replace('/files', "/files/styles/360_245/public");
                 var time=formatDateToYmd(dataa[i]['attributes']['changed']);
-                $('.newWList').append("<div class=\"newWItem wgt-fade-animate\">\n" +
+                $('.newWList').append("<div class=\"newWItem \">\n" +
                     "                    <a href=\""+url+"\" target='_blank'>\n" +
                     "                        <div class=\"newWImg\">\n" +
                     "                            <img src=\""+pic+"\" alt=\"\">\n" +
@@ -1132,7 +1140,7 @@
                     for (var i = 0; i < dataa.length; i++) {
                         var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
                         var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                        $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                        $("#yuanxiao").append("<div class=\"copWItem \"" +
                             " data-logo='"+pic+"'"+
                             " data-pic='"+pica+"'"+
                             " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
@@ -1200,7 +1208,7 @@
                     for (var i = 0; i < dataa.length; i++) {
                         var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
                         var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                        $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                        $("#yuanxiao").append("<div class=\"copWItem \"" +
                             " data-logo='"+pic+"'"+
                             " data-pic='"+pica+"'"+
                             " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
@@ -1247,7 +1255,7 @@
             for (var i = 0; i < dataa.length; i++) {
                 var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
                 var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                $("#yuanxiao").append("<div class=\"copWItem wgt-fade-animate\"" +
+                $("#yuanxiao").append("<div class=\"copWItem \"" +
                     " data-logo='"+pic+"'"+
                     " data-pic='"+pica+"'"+
                     " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
@@ -1278,6 +1286,7 @@
         $('.copFBox .title').text($(this).attr('data-title'))
         $('.copFBox .xy').text($(this).attr('data-xy'))
         $('.copFBox').addClass('copFBoxAct')
+        document.body.style.overflow = 'hidden';
     })
 </script>
 </html>
