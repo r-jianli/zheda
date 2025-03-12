@@ -1003,7 +1003,7 @@
                     if(i===0){
                         ongj=data[i]['id']
                     }
-                    $(".guojia").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"'>"+data[i]['attributes']['name']+"</a>")
+                    $(".guojia").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"'>"+data[i]['attributes']['name']+"</a>")
                     $.ajax({
                         url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+data[i]['id']+"&include=field_cooperation_logo",
                         method: 'GET',
