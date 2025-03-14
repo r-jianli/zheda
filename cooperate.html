@@ -231,10 +231,10 @@
 
         .copWXl::after {
             width: 100%;
-            height: 10px;
+            height: 30px;
             position: absolute;
             left: 0;
-            top: calc(100% - 1px);
+            top: calc(100% - 10px);
             content: '';
         }
 
@@ -478,11 +478,14 @@
         </div>
     </div>
     <script>
-        $('.copWXl').hover(function () {
-            $(this).find('.copWXlBox').slideDown()
-        }, function () {
-            $(this).find('.copWXlBox').slideUp()
-        });
+
+$('.copWXl').mousemove(function () {
+            $(this).find('.copWXlBox').fadeIn(500)
+        })
+        $('.copWXl').mouseleave(function () {
+            $(this).find('.copWXlBox').fadeOut(500)
+        })
+       
     </script>
     <style>
         .newWBox {
