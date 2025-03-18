@@ -785,12 +785,16 @@ $('.copWXl').mousemove(function () {
         .copHItem span {
             font-size: 18px;
             color: #fff;
+            
         }
 
         .copHItem span:nth-child(1) {
             opacity: .6;
         }
-
+ .copHItem span:nth-child(2) {
+    width: calc(100% - 150px);
+    text-align: end;
+        }
         .copHLogo {
             width: 200px;
             height: 50px;
@@ -958,100 +962,91 @@ $('.copWXl').mousemove(function () {
         return params;
     }
     function fetchData() {
-        var url=window.location.search
+        var url = window.location.search;
         var params = new URLSearchParams(url);
-        var param1 = params.get('id')?params.get('id'):0
-        console.log(params)
-        console.log(param1)
+        var param1 = params.get('id') ? params.get('id') : 0;
+        console.log(params);
+        console.log(param1);
+
         $.ajax({
             url: "https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?page[offset]=0&page[limit]=6",
             method: 'GET',
             dataType: 'json',
-            timeout: 0, // 0 表示无超时限制
-            beforeSend: function(xhr) {
-                // 如果需要可以添加请求头
-                // xhr.setRequestHeader('Header-Name', 'value');
-            }
-        }).then(function(response) {
-            // 自动解析 JSON 数据（因为指定了 dataType: 'json'）
-            var data=response.data
-            console.log(data)
-            var onzhou='';
-            for (var i = 0; i < data.length; i++) {
-                   console.log(i)
-                if(i===Number(param1)){
-                    onzhou=data[i]['id']
-                    $("#zhou").append("<div class=\"copWTItem copWTItemAct\"  data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"'>"+data[i]['attributes']['name']+"</div>")
-                    $('#zhouname').text(data[i]['attributes']['name'])
-                }else{
-                    $("#zhou").append("<div class=\"copWTItem \"  data-id='"+data[i]['id']+"'>"+data[i]['attributes']['name']+"</div>")
+        }).then(function (response) {
+            var data = response.data;
+            console.log(data);
+            var onzhou = '';
+            for (let i = 0; i < data.length; i++) { // 使用 let 避免闭包问题
+                if (i === Number(param1)) {
+                    onzhou = data[i]['id'];
+                    $("#zhou").append(`<div class="copWTItem copWTItemAct" data-id="${data[i]['id']}" data-title="${data[i]['attributes']['name']}">${data[i]['attributes']['name']}</div>`);
+                    $('#zhouname').text(data[i]['attributes']['name']);
+                } else {
+                    $("#zhou").append(`<div class="copWTItem" data-id="${data[i]['id']}">${data[i]['attributes']['name']}</div>`);
                 }
-                $("#zhoua").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"'>"+data[i]['attributes']['name']+"</a>")
+                $("#zhoua").append(`<a href="javascript:;" data-id="${data[i]['id']}">${data[i]['attributes']['name']}</a>`);
             }
+
             $.ajax({
-                url: "https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]="+onzhou,
+                url: `https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]=${onzhou}`,
                 method: 'GET',
                 dataType: 'json',
-                timeout: 0, // 0 表示无超时限制
-                beforeSend: function(xhr) {
-                    // 如果需要可以添加请求头
-                    // xhr.setRequestHeader('Header-Name', 'value');
-                }
-            }).
-            then(function(response) {
-                var data=response.data
-                console.log(response)
-                var ongj='';
-                for (var i = 0; i < data.length; i++) {
-                    if(i===0){
-                        ongj=data[i]['id']
-                    }
-                    $(".guojia").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"'>"+data[i]['attributes']['name']+"</a>")
-                    $.ajax({
-                        url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+data[i]['id']+"&include=field_cooperation_logo",
-                        method: 'GET',
-                        dataType: 'json',
-                        timeout: 0, // 0 表示无超时限制
-                        beforeSend: function(xhr) {
-                            // 如果需要可以添加请求头
-                            // xhr.setRequestHeader('Header-Name', 'value');
-                        }
-                    }).
-                    then(function(response) {
-                        var dataa=response.data
-                        var inc=response.included
-                        console.log(response)
+            }).then(function (response) {
+                var data = response.data;
+                console.log(response);
 
-                        // var ongj='';
-                        for (var i = 0; i < dataa.length; i++) {
-                            var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                            var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                            $("#yuanxiao").append("<div class=\"copWItem \"" +
-                                " data-logo='"+pic+"'"+
-                                " data-pic='"+pica+"'"+
-                                " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
-                                " data-title='"+dataa[i]['attributes']['title']+"'"+
-                                " data-etitle='"+dataa[i]['attributes']['title']+"'"+
-                                " data-id='"+dataa[i]['id']+"'>\n" +
-                                "                    <a href=\"javaScript:;\">\n" +
-                                "                        <div class=\"copWImg\">\n" +
-                                "                            <img src=\""+pic+"\" alt=\"\">\n" +
-                                "                        </div>\n" +
-                                "                        <div class=\"copWTit\">\n" +
-                                dataa[i]['attributes']['title']+
-                                "                        </div>\n" +
-                                "                        <div class=\"copWBtn\">\n" +
-                                "                            <span>查看更多</span>\n" +
-                                "                            <img src=\"./images/jt.png\" alt=\"\">\n" +
-                                "                        </div>\n" +
-                                "                    </a>\n" +
-                                "                </div>")
-                        }
-                    })
-                }
-            })
+                // 处理每个国家数据
+                data.forEach((country, index) => { // 使用 forEach 和箭头函数简化
+                    let countryId = country.id;
+                    let logoUrl = `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_logo`;
+                    let coverUrl = `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_cover`;
 
-        })
+                    // 使用 Promise.all 同时请求 logo 和 cover 数据
+                    Promise.all([
+                        $.ajax({ url: logoUrl, method: 'GET', dataType: 'json' }),
+                        $.ajax({ url: coverUrl, method: 'GET', dataType: 'json' })
+                    ]).then(([logoResponse, coverResponse]) => {
+                        let inc = logoResponse.included;
+                        let inca = coverResponse.included; // 现在 inca 会被正确赋值
+
+                        // 处理数据拼接
+                        logoResponse.data.forEach((item, idx) => {
+                            let pic = inc[idx]?.attributes?.uri?.url
+                                ? `https://www.intl.zju.edu.cn${inc[idx].attributes.uri.url}`
+                                : ''; // 处理可能的 undefined
+                            let coverPic = inca[idx]?.attributes?.uri?.url
+                                ? `https://www.intl.zju.edu.cn${inca[idx].attributes.uri.url}`
+                                : '';
+
+                            $("#yuanxiao").append(`
+                            <div class="copWItem"
+                                 data-logo="${pic}"
+                                 data-pic="${coverPic}"
+                                 data-xy="${item.attributes.field_protocol_name}"
+                                 data-title="${item.attributes.title}"
+                                 data-etitle="${item.attributes.title}"
+                                 data-id="${item.id}">
+                                <a href="javascript:;">
+                                    <div class="copWImg">
+                                        <img src="${pic}" alt="">
+                                    </div>
+                                    <div class="copWTit">${item.attributes.title}</div>
+                                    <div class="copWBtn">
+                                        <span>查看更多</span>
+                                        <img src="./images/jt.png" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        `);
+                        });
+                    }).catch(error => {
+                        console.error("请求失败:", error);
+                    });
+                });
+            });
+        }).catch(error => {
+            console.error("请求失败:", error);
+        });
     }
     function formatDateToYmd(isoDateString) {
         // 创建一个 Date 对象
@@ -1168,119 +1163,183 @@ $('.copWXl').mousemove(function () {
             }
         })
     })
-    $("#zhou").on('click','.copWTItem',function (){
-        $(".guojianame").text("选择国家")
-        var id=$(this).attr('data-id')
-        $(this).addClass('copWTItemAct').siblings().removeClass('copWTItemAct')
+    $("#zhou").on('click', '.copWTItem', function () {
+        $(".guojianame").text("选择国家");
+        var id = $(this).attr('data-id');
+        $(this).addClass('copWTItemAct').siblings().removeClass('copWTItemAct');
+
         $.ajax({
-            url: "https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]="+id,
+            url: `https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]=${id}`,
             method: 'GET',
             dataType: 'json',
-            timeout: 0, // 0 表示无超时限制
-            beforeSend: function(xhr) {
-                // 如果需要可以添加请求头
-                // xhr.setRequestHeader('Header-Name', 'value');
-            }
-        }).
-        then(function(response) {
-            var data=response.data
-            console.log(response)
-            var ongj='';
-            $(".guojia").html("");
-            for (var i = 0; i < data.length; i++) {
-                if(i===0){
-                    ongj=data[i]['id']
-                }
-                $(".guojia").append("<a href=\"javascript:;\" data-id='"+data[i]['id']+"' data-title='"+data[i]['attributes']['name']+"' >"+data[i]['attributes']['name']+"</a>")
-                $.ajax({
-                    url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+data[i]['id']+"&include=field_cooperation_logo",
+        }).then(function (response) {
+            const data = response.data;
+            $(".guojia").empty();
+
+            // 存储所有合作机构的Promise
+            const allCooperationPromises = [];
+
+            data.forEach((country, index) => {
+                const countryId = country.id;
+                const countryName = country.attributes.name;
+
+                // 创建国家筛选按钮
+                $(".guojia").append(
+                    `<a href="javascript:;"
+                    data-id="${countryId}"
+                    data-title="${countryName}">
+                    ${countryName}
+                </a>`
+                );
+
+                // 创建并行请求
+                const logoPromise = $.ajax({
+                    url: `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_logo`,
                     method: 'GET',
-                    dataType: 'json',
-                    timeout: 0, // 0 表示无超时限制
-                    beforeSend: function(xhr) {
-                        // 如果需要可以添加请求头
-                        // xhr.setRequestHeader('Header-Name', 'value');
-                    }
-                }).
-                then(function(response) {
-                    var dataa=response.data
-                    var inc=response.included
-                    console.log(response)
-                    $("#yuanxiao").html("");
-                    // var ongj='';
-                    for (var i = 0; i < dataa.length; i++) {
-                        var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                        var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                        $("#yuanxiao").append("<div class=\"copWItem \"" +
-                            " data-logo='"+pic+"'"+
-                            " data-pic='"+pica+"'"+
-                            " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
-                            " data-title='"+dataa[i]['attributes']['title']+"'"+
-                            " data-etitle='"+dataa[i]['attributes']['title']+"'"+
-                            " data-id='"+dataa[i]['id']+"'>\n" +
-                            "                    <a href=\"javaScript:;\">\n" +
-                            "                        <div class=\"copWImg\">\n" +
-                            "                            <img src=\""+pic+"\" alt=\"\">\n" +
-                            "                        </div>\n" +
-                            "                        <div class=\"copWTit\">\n" +
-                            dataa[i]['attributes']['title']+
-                            "                        </div>\n" +
-                            "                        <div class=\"copWBtn\">\n" +
-                            "                            <span>查看更多</span>\n" +
-                            "                            <img src=\"./images/jt.png\" alt=\"\">\n" +
-                            "                        </div>\n" +
-                            "                    </a>\n" +
-                            "                </div>")
-                    }
+                    dataType: 'json'
+                });
+
+                const coverPromise = $.ajax({
+                    url: `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_cover`,
+                    method: 'GET',
+                    dataType: 'json'
+                });
+
+                // 将两个请求合并为一个Promise
+                allCooperationPromises.push(
+                    Promise.all([logoPromise, coverPromise])
+                        .then(([logoRes, coverRes]) => {
+                            const cooperationData = logoRes.data;
+                            const logos = logoRes.included;
+                            const covers = coverRes.included;
+
+                            return cooperationData.map((item, idx) => {
+                                const logoUrl = logos[idx]?.attributes?.uri?.url
+                                    ? `https://www.intl.zju.edu.cn${logos[idx].attributes.uri.url}`
+                                    : '';
+                                const coverUrl = covers[idx]?.attributes?.uri?.url
+                                    ? `https://www.intl.zju.edu.cn${covers[idx].attributes.uri.url}`
+                                    : '';
+
+                                return `
+                                <div class="copWItem"
+                                    data-logo="${logoUrl}"
+                                    data-pic="${coverUrl}"
+                                    data-xy="${item.attributes.field_protocol_name}"
+                                    data-title="${item.attributes.title}"
+                                    data-id="${item.id}">
+                                    <a href="javascript:;">
+                                        <div class="copWImg">
+                                            <img src="${logoUrl}" alt="${item.attributes.title}">
+                                        </div>
+                                        <div class="copWTit">${item.attributes.title}</div>
+                                        <div class="copWBtn">
+                                            <span>查看更多</span>
+                                            <img src="./images/jt.png" alt="箭头">
+                                        </div>
+                                    </a>
+                                </div>`;
+                            });
+                        })
+                );
+            });
+
+            // 等待所有请求完成后统一更新DOM
+            Promise.all(allCooperationPromises)
+                .then(results => {
+                    $("#yuanxiao").empty();
+                    results.flat().forEach(html => {
+                        $("#yuanxiao").append(html);
+                    });
                 })
-            }
-        })
-    })
-    $(".guojia").on('click','a',function (){
-        var id=$(this).attr('data-id')
-        $(".guojianame").text($(this).attr('data-title'))
-        $.ajax({
-            url: "https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]="+id+"&include=field_cooperation_logo",
+                .catch(error => {
+                    console.error("数据加载失败:", error);
+                    $("#yuanxiao").html('<div class="error">数据加载失败，请稍后重试</div>');
+                });
+        }).catch(error => {
+            console.error("国家列表加载失败:", error);
+            $(".guojia").html('<div class="error">国家列表加载失败</div>');
+        });
+    });
+    $(".guojia").on('click', 'a', function () {
+        const countryId = $(this).data('id');
+        const countryName = $(this).data('title');
+        $(".guojianame").text(countryName);
+
+        // 并行请求logo和cover数据
+        const logoRequest = $.ajax({
+            url: `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_logo`,
             method: 'GET',
-            dataType: 'json',
-            timeout: 0, // 0 表示无超时限制
-            beforeSend: function(xhr) {
-                // 如果需要可以添加请求头
-                // xhr.setRequestHeader('Header-Name', 'value');
-            }
-        }).
-        then(function(response) {
-            var dataa=response.data
-            var inc=response.included
-            console.log(response)
-            $("#yuanxiao").html("");
-            // var ongj='';
-            for (var i = 0; i < dataa.length; i++) {
-                var pic="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                var pica="https://www.intl.zju.edu.cn"+inc[i]['attributes']['uri']['url']
-                $("#yuanxiao").append("<div class=\"copWItem \"" +
-                    " data-logo='"+pic+"'"+
-                    " data-pic='"+pica+"'"+
-                    " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
-                    " data-title='"+dataa[i]['attributes']['title']+"'"+
-                    " data-etitle='"+dataa[i]['attributes']['title']+"'"+
-                    " data-id='"+dataa[i]['id']+"'>\n" +
-                    "                    <a href=\"javaScript:;\">\n" +
-                    "                        <div class=\"copWImg\">\n" +
-                    "                            <img src=\""+pic+"\" alt=\"\">\n" +
-                    "                        </div>\n" +
-                    "                        <div class=\"copWTit\">\n" +
-                    dataa[i]['attributes']['title']+
-                    "                        </div>\n" +
-                    "                        <div class=\"copWBtn\">\n" +
-                    "                            <span>查看更多</span>\n" +
-                    "                            <img src=\"./images/jt.png\" alt=\"\">\n" +
-                    "                        </div>\n" +
-                    "                    </a>\n" +
-                    "                </div>")
-            }
-        })
-    })
+            dataType: 'json'
+        });
+
+        const coverRequest = $.ajax({
+            url: `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_cover`,
+            method: 'GET',
+            dataType: 'json'
+        });
+
+        Promise.all([logoRequest, coverRequest])
+            .then(([logoRes, coverRes]) => {
+                const cooperationData = logoRes.data;
+                const logos = logoRes.included;
+                const covers = coverRes.included;
+
+                $("#yuanxiao").empty();
+
+                // 使用文档片段批量插入
+                const fragment = document.createDocumentFragment();
+
+                cooperationData.forEach((item, index) => {
+                    // 安全获取图片路径
+                    const logoUrl = logos[index]?.attributes?.uri?.url
+                        ? `https://www.intl.zju.edu.cn${logos[index].attributes.uri.url}`
+                        : './images/default-logo.png';
+
+                    const coverUrl = covers[index]?.attributes?.uri?.url
+                        ? `https://www.intl.zju.edu.cn${covers[index].attributes.uri.url}`
+                        : './images/default-cover.png';
+
+                    // 使用模板字符串创建元素
+                    const template = `
+                    <div class="copWItem"
+                        data-logo="${logoUrl}"
+                        data-pic="${coverUrl}"
+                        data-xy="${item.attributes.field_protocol_name || ''}"
+                        data-title="${item.attributes.title}"
+                        data-id="${item.id}">
+                        <a href="javascript:;">
+                            <div class="copWImg">
+                                <img src="${logoUrl}" alt="${item.attributes.title}">
+                            </div>
+                            <div class="copWTit">${item.attributes.title}</div>
+                            <div class="copWBtn">
+                                <span>查看更多</span>
+                                <img src="./images/jt.png" alt="查看更多">
+                            </div>
+                        </a>
+                    </div>
+                `;
+
+                    // 使用文档片段暂存
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = template;
+                    fragment.appendChild(tempDiv.firstElementChild);
+                });
+
+                // 一次性插入DOM
+                $("#yuanxiao").append(fragment);
+            })
+            .catch(error => {
+                console.error("数据加载失败:", error);
+                $("#yuanxiao").html(`
+                <div class="error-message">
+                    <i class="icon-warning"></i>
+                    数据加载失败，请稍后重试
+                </div>
+            `);
+            });
+    });
     // $('.copWItem').click(function () {
     $("#yuanxiao").on("click",'.copWItem',function (){
         console.log('111')
