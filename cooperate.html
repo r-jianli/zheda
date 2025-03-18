@@ -785,16 +785,12 @@ $('.copWXl').mousemove(function () {
         .copHItem span {
             font-size: 18px;
             color: #fff;
-            
         }
 
         .copHItem span:nth-child(1) {
             opacity: .6;
         }
- .copHItem span:nth-child(2) {
-    width: calc(100% - 150px);
-    text-align: end;
-        }
+
         .copHLogo {
             width: 200px;
             height: 50px;
@@ -986,7 +982,6 @@ $('.copWXl').mousemove(function () {
                 }
                 $("#zhoua").append(`<a href="javascript:;" data-id="${data[i]['id']}">${data[i]['attributes']['name']}</a>`);
             }
-
             $.ajax({
                 url: `https://www.intl.zju.edu.cn/jsonapi/taxonomy_term/location?filter[parent.id]=${onzhou}`,
                 method: 'GET',
@@ -994,10 +989,14 @@ $('.copWXl').mousemove(function () {
             }).then(function (response) {
                 var data = response.data;
                 console.log(response);
-
+                $(".guojia").html('')
                 // 处理每个国家数据
                 data.forEach((country, index) => { // 使用 forEach 和箭头函数简化
                     let countryId = country.id;
+                    if(index===0){
+                        ongj=countryId
+                    }
+                    $(".guojia").append("<a href=\"javascript:;\" data-id='"+country.id+"' data-title='"+country.attributes.name+"'>"+country.attributes.name+"</a>")
                     let logoUrl = `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_logo`;
                     let coverUrl = `https://www.intl.zju.edu.cn/zh-hans/jsonapi/node/cooperation?filter[field_new_cooperation_location.id]=${countryId}&include=field_cooperation_cover`;
 
@@ -1008,7 +1007,6 @@ $('.copWXl').mousemove(function () {
                     ]).then(([logoResponse, coverResponse]) => {
                         let inc = logoResponse.included;
                         let inca = coverResponse.included; // 现在 inca 会被正确赋值
-
                         // 处理数据拼接
                         logoResponse.data.forEach((item, idx) => {
                             let pic = inc[idx]?.attributes?.uri?.url
@@ -1017,7 +1015,6 @@ $('.copWXl').mousemove(function () {
                             let coverPic = inca[idx]?.attributes?.uri?.url
                                 ? `https://www.intl.zju.edu.cn${inca[idx].attributes.uri.url}`
                                 : '';
-
                             $("#yuanxiao").append(`
                             <div class="copWItem"
                                  data-logo="${pic}"
@@ -1175,14 +1172,12 @@ $('.copWXl').mousemove(function () {
         }).then(function (response) {
             const data = response.data;
             $(".guojia").empty();
-
             // 存储所有合作机构的Promise
             const allCooperationPromises = [];
 
             data.forEach((country, index) => {
                 const countryId = country.id;
                 const countryName = country.attributes.name;
-
                 // 创建国家筛选按钮
                 $(".guojia").append(
                     `<a href="javascript:;"
