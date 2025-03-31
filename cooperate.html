@@ -644,7 +644,7 @@ $('.copWXl').mousemove(function () {
             </div>
         </div>
     </div>
-    <style>
+      <style>
         .copFBox {
             width: 100%;
             height: 100%;
@@ -774,7 +774,7 @@ $('.copWXl').mousemove(function () {
             margin-bottom: 50px;
         }
 
-        .copHItem:first-child {
+        .copHItem:nth-child(2) {
             border-top: 1px solid rgb(255, 255, 255, .1);
         }
 
@@ -782,15 +782,21 @@ $('.copWXl').mousemove(function () {
             padding: 20px 0;
             display: flex;
             justify-content: space-between;
-            align-items: center;
             border-bottom: 1px solid rgb(255, 255, 255, .1);
         }
 
         .copHItem span {
             font-size: 18px;
             color: #fff;
+            text-align: end;
+            opacity: 1!important;
         }
-
+        .copHItem p{
+            width: calc(100% - 150px);
+            font-size: 18px;
+            color: #fff;
+            text-align: end;
+        }
         .copHItem span:nth-child(1) {
             opacity: .6;
         }
@@ -879,14 +885,21 @@ $('.copWXl').mousemove(function () {
     }
         }
         @media(max-width:500px){
+            .copHItem{
+                flex-direction: column;
+            }
             .copHItem span {
         font-size: 13px;
+        text-align: left;
     }
-    
+    .copHItem p{
+        width: 100%;
+        text-align: left;
+    }
     .copHLogo {
         width: 150px;
         height: 40px;
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
     .copWTItem {
         margin-right: 12px;
@@ -910,7 +923,7 @@ $('.copWXl').mousemove(function () {
                     </div>
                     <div class="copHItem">
                         <span> 协议类型:</span>
-                        <span class="xy"></span>
+                        <p class="xy"></p>
                     </div>
                     <div class="copHItem">
                         <span> 合作单位名称:</span>
@@ -1345,7 +1358,16 @@ $('.copWXl').mousemove(function () {
         $('.copFBox .pic').attr("src",$(this).attr('data-pic'))
         $('.copFBox .logo').attr("src",$(this).attr('data-logo'))
         $('.copFBox .title').text($(this).attr('data-title'))
-        $('.copFBox .xy').text($(this).attr('data-xy'))
+        let html = ''; // 将 const 改为 let 或 var
+        var str = $(this).attr('data-xy');
+        var arr = str.split(','); 
+        console.log(arr);
+        
+        for (var i = 0; i < arr.length; i++) {
+            html += '<span>' + arr[i] + '</span>';
+        }
+        
+        $('.copFBox .xy').html(html);
         $('.copFBox').addClass('copFBoxAct')
         document.body.style.overflow = 'hidden';
     })
