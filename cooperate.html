@@ -22,9 +22,11 @@
 
 <body>
     <style>
-        .xy{
-             width: 80%;
+        .xy,.title{
+            width: 80%;
             text-align: right;
+            display: flex;
+            flex-direction: column;
         }
         .header {
             width: 100%;
@@ -644,7 +646,7 @@ $('.copWXl').mousemove(function () {
             </div>
         </div>
     </div>
-      <style>
+    <style>
         .copFBox {
             width: 100%;
             height: 100%;
@@ -927,7 +929,7 @@ $('.copWXl').mousemove(function () {
                     </div>
                     <div class="copHItem">
                         <span> 合作单位名称:</span>
-                        <span class="title"> </span>
+                        <p class="title"> </p>
                     </div>
 <!--                    <div class="copHItem">-->
 <!--                        <span> 合作单位名称（外文）:</span>-->
@@ -1032,11 +1034,13 @@ $('.copWXl').mousemove(function () {
                             let coverPic = inca[idx]?.attributes?.uri?.url
                                 ? `https://www.intl.zju.edu.cn${inca[idx].attributes.uri.url}`
                                 : '';
+                                console.log(item);
                             $("#yuanxiao").append(`
                             <div class="copWItem"
                                  data-logo="${pic}"
                                  data-pic="${coverPic}"
                                  data-xy="${item.attributes.field_protocol_name}"
+                                 data-name="${item.attributes.field_cooperation_type}"
                                  data-title="${item.attributes.title}"
                                  data-etitle="${item.attributes.title}"
                                  data-id="${item.id}">
@@ -1155,7 +1159,8 @@ $('.copWXl').mousemove(function () {
                         $("#yuanxiao").append("<div class=\"copWItem \"" +
                             " data-logo='"+pic+"'"+
                             " data-pic='"+pica+"'"+
-                            " data-xy='"+dataa[i]['attributes']['field_protocol_name']+"'"+
+                            " data-xy='"+dataa[i]['attributes']['field_cooperation_type']+"'"+
+                            " data-name='"+dataa[i]['attributes']['field_protocol_name']+"'"+
                             " data-title='"+dataa[i]['attributes']['title']+"'"+
                             " data-etitle='"+dataa[i]['attributes']['title']+"'"+
                             " data-id='"+dataa[i]['id']+"'>\n" +
@@ -1238,6 +1243,7 @@ $('.copWXl').mousemove(function () {
                                     data-logo="${logoUrl}"
                                     data-pic="${coverUrl}"
                                     data-xy="${item.attributes.field_protocol_name}"
+                                    data-name="${item.attributes.field_cooperation_type}"
                                     data-title="${item.attributes.title}"
                                     data-id="${item.id}">
                                     <a href="javascript:;">
@@ -1318,6 +1324,7 @@ $('.copWXl').mousemove(function () {
                         data-logo="${logoUrl}"
                         data-pic="${coverUrl}"
                         data-xy="${item.attributes.field_protocol_name || ''}"
+                        data-name="${item.attributes.field_cooperation_type || ''}"
                         data-title="${item.attributes.title}"
                         data-id="${item.id}">
                         <a href="javascript:;">
@@ -1357,7 +1364,7 @@ $('.copWXl').mousemove(function () {
         console.log('111')
         $('.copFBox .pic').attr("src",$(this).attr('data-pic'))
         $('.copFBox .logo').attr("src",$(this).attr('data-logo'))
-        $('.copFBox .title').text($(this).attr('data-title'))
+        // $('.copFBox .title').text($(this).attr('data-title'))
         let html = ''; // 将 const 改为 let 或 var
         var str = $(this).attr('data-xy');
         var arr = str.split(','); 
@@ -1367,9 +1374,18 @@ $('.copWXl').mousemove(function () {
             html += '<span>' + arr[i] + '</span>';
         }
         
-        $('.copFBox .xy').html(html);
+        $('.copFBox .title').html(html);
+         let htmla = ''; // 将 const 改为 let 或 var
+        var stra = $(this).attr('data-name');
+        var arra = stra.split(','); 
+        console.log(arra);
+        
+        for (var i = 0; i < arra.length; i++) {
+            htmla += '<span>' + arra[i] + '</span>';
+        }
+        
+        $('.copFBox .xy').html(htmla);
         $('.copFBox').addClass('copFBoxAct')
-        document.body.style.overflow = 'hidden';
     })
 </script>
 </html>
