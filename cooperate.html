@@ -53,6 +53,7 @@
             line-height: 1;
             color: #192E5F;
             font-weight: 500;
+            text-transform: capitalize;
         }
 
         .BanBox {
@@ -170,9 +171,11 @@
         }
 
         .copWTit {
-            font-size: 20px;
+            font-size: 18px;
+            line-height: 1.5;
             text-align: center;
             color: #192E5F;
+            margin-top: 10px;
         }
 
         .copWBtn {
@@ -784,14 +787,21 @@ $('.copWXl').mousemove(function () {
             padding: 20px 0;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid rgb(255, 255, 255, .1);
+            border-bottom: 1px solid rgb(255, 255, 255, .3);
         }
 
         .copHItem span {
             font-size: 18px;
             color: #fff;
             text-align: end;
-            opacity: 1!important;
+        }
+        .copHItem:nth-child(2) .title span {
+            font-size: 18px;
+            color: #fff;
+            text-align: start;
+            opacity: 1 !important;
+            padding: 10px 0;
+            border-bottom: 1px solid rgb(255, 255, 255, .1);
         }
         .copHItem p{
             width: calc(100% - 150px);
